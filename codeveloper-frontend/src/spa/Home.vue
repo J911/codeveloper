@@ -22,17 +22,12 @@
         <section id="language">
             <h1>현재 지원언어</h1>
             <ul class="languages">
-                <li class="item">
-                    <span class="icon">C</span> 
-                    <p>C language</p>
-                </li>
-                <li class="item">
-                    <span class="icon"><i class="fab fa-node-js"></i></span>
-                    <p>Node Js</p>
-                </li>
-                <li class="item">
-                    <span class="icon"><i class="fab fa-python"></i></span>
-                    <p>Python</p>
+                <li class="item" v-for="lang in languages">
+                    <span class="icon" 
+                        v-html="lang.icon == null ? lang.language :
+                         `<i class='${lang.icon}'></i>`">   
+                    </span> 
+                    <p>{{ lang.text }}</p>
                 </li>
             </ul>
             <p class="sub-contents">원하는 언어가 없나요?</p>
@@ -53,7 +48,23 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Home Page'
+      languages: [
+          {
+              icon: null,
+              language: 'C',
+              text: 'C Language'
+          },
+          {
+              icon: 'fab fa-node-js',
+              language: 'Node Js',
+              text: 'Node Js'
+          },
+          {
+              icon: 'fab fa-python',
+              language: 'Python',
+              text: 'Python'
+          },
+      ]
     }
   }
 }
