@@ -22,7 +22,7 @@
         <section id="language">
             <h1>현재 지원언어</h1>
             <ul class="languages">
-                <li class="item" v-for="lang in languages">
+                <li class="item" v-for="(lang, index) in languages" :key="index">
                     <span class="icon" 
                         v-html="lang.icon == null ? lang.language :
                          `<i class='${lang.icon}'></i>`">   
