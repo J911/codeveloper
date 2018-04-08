@@ -24,8 +24,8 @@
             <ul class="languages">
                 <li class="item" v-for="(lang, index) in languages" :key="index">
                     <span class="icon" 
-                        v-html="lang.icon == null ? lang.language :
-                         `<i class='${lang.icon}'></i>`">   
+                        v-html="lang.icon ? `<i class='${lang.icon}'></i>` :
+                         lang.language">   
                     </span> 
                     <p>{{ lang.text }}</p>
                 </li>
