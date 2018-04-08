@@ -1,22 +1,6 @@
 <template>
   <div id="home">
-    <nav>
-        <span class="brand">codeveloper.io</span>
-        <ul class="menu">
-            <li class="item">
-                introduce
-            </li>
-            <li class="item">
-                developer
-            </li>
-            <li class="item">
-                sign in
-            </li>
-            <li class="item">
-                sign up
-            </li>
-        </ul>
-    </nav>
+    <app-nav />
     <header>
         <h1>
             당신의 팀과 co-develop하세요!
@@ -61,8 +45,12 @@
 </template>
 
 <script>
+import Nav from './components/Nav.vue';
 export default {
   name: 'Home',
+  components: {
+      'app-nav': Nav
+  },
   data () {
     return {
       msg: 'Welcome to Home Page'
@@ -76,23 +64,6 @@ export default {
         width: 30px;
         margin: 20px auto;
         border: 2px solid rgb(248, 107, 107); 
-    }
-    nav {
-        height: 30px;
-        line-height: 30px;
-        padding: 10px 20px;
-    }
-    nav span.brand {
-        font-family: 'Oswald', sans-serif;
-        float: left;
-    }
-    nav ul.menu {
-        float: right;
-    }
-    nav ul.menu li.item {
-        display: inline-block;
-        padding: 0 15px;
-        cursor: pointer;
     }
     header {
         background-image: url('../assets/header_bg.png');
@@ -125,6 +96,7 @@ export default {
         border-radius: 3px;
         color: #fff;
         box-shadow: 0 0 10px rgb(106, 106, 106);
+        cursor: pointer;
     }
     header button:active {
         background-color: rgb(218, 84, 84);
