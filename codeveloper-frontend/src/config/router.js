@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 import Home from '../spa/Home.vue'
 import Login from '../spa/Login.vue'
+import IDE from '../spa/IDE.vue'
 
 const routes = [
     { 
@@ -15,6 +16,13 @@ const routes = [
         component: Login,
         meta: {
             title: '로그인 - Codeveloper - 당신의 팀과 co-develop하세요!'
+        }
+    },
+    { 
+        path: '/ide', 
+        component: IDE,
+        meta: {
+            title: 'IDE - Codeveloper - 당신의 팀과 co-develop하세요!'
         }
     },
 ]
