@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const cookieSession = require('cookie-session');
+const cookieSession = require('./src/cookie-session');
 const flash = require('connect-flash');
 const path = require('path');
 require('dotenv').config();
@@ -13,12 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(cookieSession({
-    keys: ['node_yun'],
-    cookie: {
-        maxAge: 1000 * 60 * 60
-    }
-}));
+app.use(cookieSession);
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
