@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import Home from '../spa/Home.vue'
+import Login from '../spa/Login.vue'
 
 const routes = [
     { 
@@ -7,6 +8,13 @@ const routes = [
         component: Home,
         meta: {
             title: 'Codeveloper - 당신의 팀과 co-develop하세요!'
+        }
+    },
+    { 
+        path: '/login', 
+        component: Login,
+        meta: {
+            title: '로그인 - Codeveloper - 당신의 팀과 co-develop하세요!'
         }
     },
 ]

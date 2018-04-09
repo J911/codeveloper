@@ -35,6 +35,7 @@ nav a.brand {
 }
 nav ul.menu {
     float: right;
+    margin: 0;
 }
 nav ul.menu li.item {
     display: inline-block;
