@@ -24,6 +24,7 @@ passport.use(new GitHubStrategy({
     callbackURL: "http://127.0.0.1:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
+    console.log(profile)
     User.findOrCreate({ githubId: profile.id }, function (err, user) {
       return cb(err, user);
     });
