@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/users', (req, res)=> getMembers(req, res));
+router.get('/', (req, res)=> {
+    console.log('OK')
+});
 
 module.exports = router;

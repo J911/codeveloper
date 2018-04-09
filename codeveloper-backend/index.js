@@ -1,9 +1,11 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
-
 const index = require('./src');
 
 app.use(bodyParser.json());
@@ -12,5 +14,5 @@ app.use(cookieParser());
 
 app.use('/', index);
 
-app.listen(3000);
+app.listen(PORT);
   
