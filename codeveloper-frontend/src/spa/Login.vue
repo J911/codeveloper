@@ -10,6 +10,7 @@
                 <label for="upw">Password</label>
                 <input type="password" id="upw" >
                 <button>로그인</button>
+                <a href="/auth/github">Github로 로그인</a>
             </form>
             
         </div>
