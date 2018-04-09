@@ -8,7 +8,7 @@
         <p><b>codeveloper.io</b>는 실시간 협업코딩 솔루션입니다.</p>
         <div class="btn-group">
             <router-link to="login"><button> <i class="fa fa-code"></i> start code</button></router-link>
-            <button class="gray">what the codeveloper</button>
+            <a href="#introduce"><button class="gray">what the codeveloper</button></a>
         </div>
     </header>
     <article>

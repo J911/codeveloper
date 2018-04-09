@@ -3,9 +3,11 @@
         <nav>
             <router-link class="brand" to="/">codeveloper.io</router-link>
             <ul class="menu">
-                <li class="item">
-                    코드벨로퍼
-                </li>
+                <a href="#introduce">
+                    <li class="item">
+                        코드벨로퍼
+                    </li>
+                </a>
                 <li class="item">
                     개발자 소개
                 </li>

@@ -3,6 +3,10 @@ hr {
     margin: 20px auto;
     border: 2px solid rgb(248, 107, 107); 
 }
+a {
+    text-decoration: none;
+    color: black;
+}
 header {
     background-image: url('../assets/header_bg.png');
     background-position: center;
