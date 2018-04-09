@@ -4,20 +4,16 @@
             <router-link class="brand" to="/">codeveloper.io</router-link>
             <ul class="menu">
                 <li class="item">
-                    introduce
+                    코드벨로퍼
                 </li>
                 <li class="item">
-                    developer
+                    개발자 소개
                 </li>
                 <router-link to="login">
                     <li class="item">
-                        sign in
+                        시작하기
                     </li>
                 </router-link>
-                
-                <li class="item">
-                    sign up
-                </li>
             </ul>
         </nav>
     </div>
@@ -44,6 +40,11 @@ nav ul.menu li.item {
     display: inline-block;
     padding: 0 15px;
     cursor: pointer;
-    color:black;
+    font-weight: 400;
+    color:rgb(52, 52, 52);
+}
+nav ul.menu li.item:hover {
+    color: rgb(232, 119, 119);
+    transition: .2s all;
 }
 </style>
