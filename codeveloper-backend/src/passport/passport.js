@@ -1,5 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const GitHubStrategy = require('passport-github').Strategy;
+require('dotenv').config();
 
 passport.use(new LocalStrategy({
     usernameField: 'username',
@@ -14,6 +16,19 @@ passport.use(new LocalStrategy({
       return done(false, null)
     }
 }));
+
+ 
+passport.use(new GitHubStrategy({
+    clientID: 'feabea44a7abf82a9dd7',
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ githubId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 
 passport.serializeUser(function (user, done) {
     done(null, user)
