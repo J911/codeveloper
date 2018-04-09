@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div id="login">
     <app-nav />
     <article>
         <div class="login-wrapper">
