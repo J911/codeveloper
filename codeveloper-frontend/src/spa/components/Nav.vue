@@ -1,7 +1,7 @@
 <template>
     <div id="nav">
         <nav>
-            <a class="brand" href="/">codeveloper.io</a>
+            <router-link class="brand" to="/">codeveloper.io</router-link>
             <ul class="menu">
                 <li class="item">
                     introduce
@@ -9,9 +9,12 @@
                 <li class="item">
                     developer
                 </li>
-                <li class="item">
-                    sign in
-                </li>
+                <router-link to="login">
+                    <li class="item">
+                        sign in
+                    </li>
+                </router-link>
+                
                 <li class="item">
                     sign up
                 </li>
@@ -41,5 +44,6 @@ nav ul.menu li.item {
     display: inline-block;
     padding: 0 15px;
     cursor: pointer;
+    color:black;
 }
 </style>
