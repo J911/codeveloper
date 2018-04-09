@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cookieSession = require('./src/cookie-session');
 const flash = require('connect-flash');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const routes = require('./src/index').routes;
@@ -22,8 +23,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+let indexPage = "";
+fs.readFile(path.resolve(__dirname, '../codeveloper-frontend/index.html'), 'utf8', function(err, data){
+    indexPage = data;
+});
+
 app.use('/', routes);
-app.use('/', express.static(path.join(__dirname, 'www')));
+app.use('/dist', express.static(path.join(__dirname, '../codeveloper-frontend/dist')));
+app.use('*', (req, res)=>res.end(indexPage));
 
 app.listen(PORT);
   
