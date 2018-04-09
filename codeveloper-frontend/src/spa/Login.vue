@@ -3,20 +3,18 @@
     <app-nav />
     <article>
         <div class="login-wrapper">
-            <h3>Sign In</h3>
-            <form action="" class="login-form">
-                <label for="uid">Username or email address</label>
-                <input type="text" id="uid" >
-                <label for="upw">Password</label>
-                <input type="password" id="upw" >
-                <button>로그인</button>
-                <a href="/auth/github">Github로 로그인</a>
-            </form>
+            <h1>
+                <span class="brand">codeveloper</span>
+                <i class="fas fa-heart"></i>
+                <i class="fab fa-github"></i>
+                Github
+            </h1>
+            <p>Github 계정만 있으면 바로 시작할 수 있습니다!</p>
             
-        </div>
-        <div class="join-wrapper">
-            <h3>아직 계정이 없으세요?</h3>
-            <form action="" class="join-form"></form>
+            <a href="/auth/github">
+                <i class="fab fa-github"></i> 로그인
+            </a>
+            
         </div>
     </article>
     <footer>
@@ -43,13 +41,16 @@ export default {
     }
     
     article {
+        position: absolute;
         padding: 20px;
         display: inline-block;
         width: 100%;
         box-sizing: border-box;
         text-align: center;
+        height: 152px;
+        top: 20%;        
     }
-    .login-wrapper, .join-wrapper  {
+    .login-wrapper {
         width: 40%;
         margin: 0 20px;
         text-align: center;
@@ -58,28 +59,39 @@ export default {
         min-width: 300px;
         vertical-align: top;
     }
-    .login-wrapper form.login-form, .join-wrapper form.join-form {
-        text-align: left;
-        border: 1px solid rgb(187, 187, 187);
-        background-color: #fff;
-        border-radius: 3px;
-        box-sizing: border-box;
-        padding: 20px;
-        height: 300px;
-        width: 100%;
+    .login-wrapper span.brand {
+        color: #000;
+        font-family: 'Oswald', sans-serif;
     }
-    .login-wrapper form.login-form label {
-        font-weight: 800;
+    .login-wrapper .fa-heart {
+        color: rgb(255, 96, 123);
     }
-    .login-wrapper form.login-form input {
+    .login-wrapper a {
+        margin: 0 auto;
+        text-decoration: none;
         display: block;
-        width: 100%;
-        height: 25px;
+        line-height: 40px;
+        width: 300px;
+        height: 40px;
+        font-size: 1rem;
+        border: none;
         border-radius: 3px;
-        border: 1px solid rgb(177, 177, 177);
-        margin: 5px 0 20px 0;
+        box-shadow: 0 0 10px gray;
+        font-weight: 600;
+        background-color: rgb(251, 251, 251);
+        color: rgb(72, 72, 72);
+    }
+    .login-wrapper a:focus {
+        outline: none;
+    }
+    .login-wrapper a:active {
+        background-color: rgb(230, 230, 230);
     }
     footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         text-align: center;
         font-weight: 800;
         padding: 20px 0;

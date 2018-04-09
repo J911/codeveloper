@@ -160,6 +160,10 @@ export default {
         cursor: pointer;
     }
     footer {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        right: 0;
         text-align: center;
         font-weight: 800;
         padding: 20px 0;
