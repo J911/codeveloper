@@ -24,6 +24,7 @@ export default {
       const baseURI = '/user';
       this.$http.get(`${baseURI}`)
       .then((result) => {
+        //statusCode 비교가 필요함.
         this.user = result.data.user
       })
     }
