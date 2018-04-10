@@ -52,13 +52,13 @@ nav span {
     padding: 20px;
 
 }
-.explorer ul.files {
+.explorer ul.files,
+.explorer ul.sub-files{
     margin: 0;
     padding: 0;
     list-style: none;
 }
 .explorer ul.files li {
-    height: 30px;
     line-height: 30px;
 }
 .explorer ul.files li.header {
@@ -66,6 +66,16 @@ nav span {
     padding: 0 20px;
     font-weight: 800;
 
+}
+.explorer ul.files li.item {
+    padding: 0 20px;
+    cursor: pointer;
+}
+.explorer ul.files li.item:hover {
+    background-color: rgb(46, 45, 45);
+}
+.explorer ul.files li.item.active {
+    background-color: rgb(70, 70, 70);
 }
 .explorer .new-items {
     float: right;

@@ -34,7 +34,23 @@
           </span>
         </li>
         <li class="item">
-
+          <i class="fas fa-caret-right"></i> folder1
+        </li>
+        <li class="item">
+          <i class="fas fa-caret-down"></i> folder2
+        </li>
+        <li class="item">
+          <ul class="sub-files">
+            <li class="item">
+            <i class="fab fa-js"></i> sample2.js
+          </li>
+        </ul>
+        </li>
+        <li class="item active">
+          <i class="fab fa-js"></i>  sample1.js
+        </li>
+        <li class="item">
+          <i class="fab fa-js"></i> sample2.js
         </li>
       </ul>
     </div>
