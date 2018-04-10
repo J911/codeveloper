@@ -57,7 +57,9 @@
 <script>
 import 'codemirror/mode/javascript/javascript.js'
 import 'codemirror/theme/base16-dark.css'
+import io from 'socket.io-client'
 
+let socket;
 export default {
   name: 'IDE',
   data () {
@@ -78,6 +80,7 @@ export default {
   },
   created() {
     this.fetchUserDate();
+    socket = io();
   },
   methods: {
     fetchUserDate() {
