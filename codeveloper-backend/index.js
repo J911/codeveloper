@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 
-const socket_connection = require('./src/socket');
+const socketEventHanddler = require('./src/socket');
 const routes = require('./src/index').routes;
 const passport = require('./src/index').passport;
 
@@ -39,7 +39,7 @@ app.use('/', routes);
 app.use('/dist', express.static(path.join(__dirname, '../codeveloper-frontend/dist')));
 app.use('*', (req, res)=>res.end(indexPage));
 
-io.on('connection', socket_connection);
+io.on('connection', socketEventHanddler);
 http.listen(PORT);
   
   
