@@ -51,7 +51,12 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(){
         console.log('user disconnected');
-	});
+    });
+    
+    //sample_code
+    socket.on('message', function(data) {
+        console.log(data);
+    });
 });
 http.listen(PORT);
   

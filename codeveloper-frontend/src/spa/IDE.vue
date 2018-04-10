@@ -81,6 +81,7 @@ export default {
   created() {
     this.fetchUserDate();
     socket = io();
+    socket.emit('message', 'hello, world');
   },
   methods: {
     fetchUserDate() {
