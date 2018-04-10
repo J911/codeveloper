@@ -9,10 +9,12 @@
           </div>
         </li>
         <li class="item">
-          <span class="logout">
-            <i class="fas fa-sign-out-alt"></i>
-            sign out
-          </span>
+          <a href="/auth/logout">
+            <span class="logout">
+              <i class="fas fa-sign-out-alt"></i>
+              sign out
+            </span>
+          </a>
         </li>
       </ul>
       
@@ -54,6 +56,10 @@ export default {
 </script>
 
 <style scope>
+  a {
+    text-decoration: none;
+    color: rgb(235, 235, 235);
+  }
   nav {
     position: fixed;
     top:0;
