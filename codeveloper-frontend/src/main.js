@@ -10,10 +10,7 @@ import App from './App.vue'
 Vue.prototype.$http = axios
 
 Vue.use(VueRouter)
-Vue.use(VueCodemirror,  { 
-  options: { theme: 'base16-dark' },
-  events: ['scroll']
-})
+Vue.use(VueCodemirror)
 new Vue({
   el: '#app',
   router,
