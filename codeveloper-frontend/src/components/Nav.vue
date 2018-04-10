@@ -1,7 +1,7 @@
 <template>
     <div id="nav">
         <nav>
-            <router-link class="brand" to="/">codeveloper.io</router-link>
+            <router-link class="brand" to="/">codeveloper</router-link>
             <ul class="menu">
                 <a href="/#introduce">
                     <li class="item">
