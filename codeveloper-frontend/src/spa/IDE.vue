@@ -16,19 +16,37 @@
             </span>
           </a>
         </li>
-      </ul>
-      
+      </ul> 
     </nav>
     <div class="explorer">
+      <div class="header">
+        EXPLORER
+      </div>
+      <ul class="files">
+        <li class="header">
+          My Files
+        </li>
+        <li class="item">
 
+        </li>
+      </ul>
     </div>
     <div class="editor">
-      
+       <codemirror ref="myCm"
+              :value="code" 
+              :options="cmOptions"
+              @ready="onCmReady"
+              @focus="onCmFocus"
+              @input="onCmCodeChange">
+      </codemirror>
     </div>
   </div>
 </template>
 
 <script>
+import 'codemirror/mode/javascript/javascript.js'
+import 'codemirror/theme/base16-dark.css'
+
 export default {
   name: 'IDE',
   data () {
@@ -36,6 +54,14 @@ export default {
       user: {
         name: undefined,
         avatar: undefined
+      },
+      code: '',
+      cmOptions: {
+        tabSize: 4,
+        mode: 'text/javascript',
+        theme: 'base16-dark',
+        lineNumbers: true,
+        line: true,
       }
     }
   },
@@ -50,7 +76,26 @@ export default {
         //statusCode 비교가 필요함.
         this.user = result.data.user
       })
+    },
+    onCmReady(cm) {
+      console.log('the editor is readied!', cm)
+    },
+    onCmFocus(cm) {
+      console.log('the editor is focus!', cm)
+    },
+    onCmCodeChange(newCode) {
+      console.log('this is new code', newCode)
+      this.code = newCode
     }
+  },
+  computed : {
+    codemirror() {
+      return this.$refs.myCm.codemirror
+    }
+  },
+  mounted() {
+    console.log('this is current codemirror object', this.codemirror)
+    // you can use this.codemirror to do something...
   }
 }
 </script>
@@ -67,6 +112,8 @@ export default {
     right: 0;
     height: 40px;
     background-color: #3c3c3c;
+    box-shadow: 0 0 10px #060505;
+    z-index: 999;
   }
   nav ul.menu{
     float: right;
@@ -95,6 +142,28 @@ export default {
     display: inline-block;
     width: 20%;
     background-color: #252526;
+    z-index: 999;
+    color: rgb(199, 199, 199);
+
+  }
+  .explorer > .header {
+    padding: 20px;
+
+  }
+  .explorer ul.files {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .explorer ul.files li {
+    height: 30px;
+    line-height: 30px;
+  }
+  .explorer ul.files li.header {
+    background-color: #3c3c3c;
+    padding-left: 20px;
+    font-weight: 800;
+
   }
   .editor {
     position: absolute;
@@ -103,6 +172,9 @@ export default {
     bottom: 0;
     display: inline-block;
     width: 80%;
-    background-color: #1e1e1e;
+    background-color: #151515;
+  }
+  .CodeMirror {
+    height: auto;
   }
 </style>
