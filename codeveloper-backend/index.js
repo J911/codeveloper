@@ -16,6 +16,10 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+io.use(function(socket, next) {
+    cookieSession(socket.request, socket.request.res, next);
+});
+
 app.use(cookieSession);
 app.use(flash());
 app.use(passport.initialize());
@@ -35,7 +39,7 @@ app.use('/dist', express.static(path.join(__dirname, '../codeveloper-frontend/di
 app.use('*', (req, res)=>res.end(indexPage));
 
 io.on('connection', function(socket){
-    console.log('a user connected');
+    console.log('a user connected',socket.request.session);
 
     socket.on('join:channel', function(data) {
         socket.join('channel' + data.channel);
@@ -44,7 +48,7 @@ io.on('connection', function(socket){
     socket.on('send:message', function(data) {
         io.sockets.in('channel' + data.channel).emit('send:message', data.message);
     });
-    
+
     socket.on('disconnect', function(){
         console.log('user disconnected');
 	});
