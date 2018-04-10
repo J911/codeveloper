@@ -7,6 +7,7 @@ const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 
+const socket_connection = require('./src/socket');
 const routes = require('./src/index').routes;
 const passport = require('./src/index').passport;
 
@@ -38,26 +39,7 @@ app.use('/', routes);
 app.use('/dist', express.static(path.join(__dirname, '../codeveloper-frontend/dist')));
 app.use('*', (req, res)=>res.end(indexPage));
 
-io.on('connection', function(socket){
-    console.log('a user connected',socket.request.session);
-
-    socket.on('join:channel', function(data) {
-        socket.join('channel' + data.channel);
-    });
-
-    socket.on('send:message', function(data) {
-        io.sockets.in('channel' + data.channel).emit('send:message', data.message);
-    });
-
-    socket.on('disconnect', function(){
-        console.log('user disconnected');
-    });
-    
-    //sample_code
-    socket.on('message', function(data) {
-        console.log(data);
-    });
-});
+io.on('connection', socket_connection);
 http.listen(PORT);
   
   
