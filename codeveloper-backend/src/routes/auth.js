@@ -8,4 +8,9 @@ router.get('/github/callback', passport.authenticate('github', { failureRedirect
     // Successful authentication, redirect home. 
     res.redirect('/');
 });
+router.get('/logout', (req, res) => {
+    req.session = null;
+    res.clearCookie('sid');
+    res.redirect('/');
+});
 module.exports = router;
