@@ -33,24 +33,11 @@
             <i class="fas fa-folder-open"></i>
           </span>
         </li>
-        <li class="item">
-          <i class="fas fa-caret-right"></i> folder1
-        </li>
-        <li class="item">
-          <i class="fas fa-caret-down"></i> folder2
-        </li>
-        <li class="item">
-          <ul class="sub-files">
-            <li class="item">
-            <i class="fab fa-js"></i> sample2.js
-          </li>
-        </ul>
-        </li>
-        <li class="item active">
-          <i class="fab fa-js"></i>  sample1.js
-        </li>
-        <li class="item">
-          <i class="fab fa-js"></i> sample2.js
+        <li v-for="(file, index) in files" 
+            :key="index"
+            @click="onFileClick(file)"
+            :class="activeFile == file.id ? 'item active': 'item'">
+          <i :class="file.icon"></i> {{ file.name }}
         </li>
       </ul>
     </div>
@@ -58,7 +45,6 @@
        <codemirror ref="myCm"
               :value="code" 
               :options="cmOptions"
-              @ready="onCmReady"
               @focus="onCmFocus"
               @input="onCmCodeChange">
       </codemirror>
@@ -88,6 +74,36 @@ export default {
         name: undefined,
         avatar: undefined
       },
+      activeFile: null,
+      files: [
+        {
+          id: 1,
+          type: 'folder',
+          icon: 'fas fa-caret-right',
+          state: 'close',
+          name: 'sample.js',
+          files: [
+            {
+              id: 4,
+              type: 'file',
+              icon: 'fab fa-js',
+              name: 'sample.js',
+            }
+          ]
+        },
+        {
+          id: 2,
+          type: 'file',
+          icon: 'fab fa-js',
+          name: 'sample1.js',
+        },
+        {
+          id: 3,
+          type: 'file',
+          icon: 'fab fa-js',
+          name: 'sample2.js',
+        }
+      ],
       code: '',
       cmOptions: {
         tabSize: 4,
@@ -112,8 +128,10 @@ export default {
         this.user = result.data.user
       })
     },
-    onCmReady(cm) {
-      console.log('the editor is readied!', cm)
+    onFileClick(file) {
+      this.activeFile = file.id;
+      // if(file.type == 'folder')
+      //   file.state = file.state == 'close' ? 'open' : 'close';
     },
     onCmFocus(cm) {
       console.log('the editor is focus!', cm)
@@ -122,15 +140,6 @@ export default {
       console.log('this is new code', newCode)
       this.code = newCode
     }
-  },
-  computed : {
-    codemirror() {
-      return this.$refs.myCm.codemirror
-    }
-  },
-  mounted() {
-    console.log('this is current codemirror object', this.codemirror)
-    // you can use this.codemirror to do something...
   }
 }
 </script>
