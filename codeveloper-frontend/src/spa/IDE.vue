@@ -111,10 +111,7 @@ export default {
     },
     saveUserFile(idx) {
       const baseURI = '/file';
-      this.$http.post(`${baseURI}/${idx}`, {code: this.code})
-      .then((result) => {
-        
-      })
+      this.$http.post(`${baseURI}/${idx}`, {code: this.code});
     },
     fetchUserFiles() {
       const baseURI = '/file';
