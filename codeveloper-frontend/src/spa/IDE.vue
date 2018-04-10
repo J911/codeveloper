@@ -1,6 +1,9 @@
 <template>
   <div id="IDE">
     <nav>
+      <a href="#" class="brand">
+        codeveloper
+      </a>
       <ul class="menu">
         <li class="item">
           <div class="profile">
@@ -39,6 +42,14 @@
               @focus="onCmFocus"
               @input="onCmCodeChange">
       </codemirror>
+    </div>
+    <div class="console">
+      <div class="header">
+        <ul class="menu">
+          <li class="item active">TERMINAL</li>
+          <li class="item">CHAT</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -114,11 +125,17 @@ export default {
     background-color: #3c3c3c;
     box-shadow: 0 0 10px #060505;
     z-index: 999;
+    padding: 0 20px;
+  }
+  nav a.brand {
+    font-family: 'Oswald', sans-serif;
+    float: left;
+    line-height: 40px;
   }
   nav ul.menu{
     float: right;
     list-style: none;
-    margin: 0 20px;
+    margin: 0;
   }
   nav ul.menu li.item {
     display: inline-block;
@@ -169,12 +186,41 @@ export default {
     position: absolute;
     top: 40px;
     right: 0;
-    bottom: 0;
+    bottom: 30%;
     display: inline-block;
     width: 80%;
     background-color: #151515;
   }
+  .console {
+    position: absolute;
+    top: 70%;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+    width: 80%;
+    background-color: #151515;
+    border-top: 1px solid rgb(57, 57, 57);
+  }
+  .console .header ul.menu{
+    list-style: none;
+    color: rgb(171, 171, 171);
+    margin: 0;
+    padding: 20px;
+  }
+  .console .header ul.menu li.item{
+    display: inline-block;
+    padding-bottom: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
   .CodeMirror {
     height: auto;
+  }
+  .CodeMirror-scroll {
+    height: 62vh;
+  }
+  .console .header ul.menu li.item.active {
+    color: rgb(206, 206, 206);
+    border-bottom: 2px solid rgb(181, 181, 181);
   }
 </style>
