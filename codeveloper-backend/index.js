@@ -13,6 +13,8 @@ const passport = require('./src/index').passport;
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 app.use(cookieSession);
 app.use(flash());
@@ -32,5 +34,23 @@ app.use('/', routes);
 app.use('/dist', express.static(path.join(__dirname, '../codeveloper-frontend/dist')));
 app.use('*', (req, res)=>res.end(indexPage));
 
-app.listen(PORT);
+io.on('connection', function(socket){
+    console.log('a user connected');
+
+    socket.on('join:channel', function(data) {
+        socket.join('channel' + data.channel);
+    });
+
+    socket.on('send:message', function(data) {
+        io.sockets.in('channel' + data.channel).emit('send:message', data.message);
+    });
+    
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+	});
+});
+http.listen(PORT);
+  
+  
+  
   
