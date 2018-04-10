@@ -9,7 +9,7 @@ passport.use(new GitHubStrategy({
     callbackURL: "http://127.0.0.1:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    Auth.findOrCreate({ name: profile.username, email: profile.emails[0].value || profile.id, avatar: profile.photos[0].value }, function (err, user) {
+    Auth.findOrCreate({ id: profile.id, name: profile.username, email: profile.emails[0].value || profile.id, avatar: profile.photos[0].value }, function (err, user) {
       return cb(err, user);
     });
   }
