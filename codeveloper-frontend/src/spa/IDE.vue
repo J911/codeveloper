@@ -36,7 +36,7 @@
         <li v-for="(file, index) in files" 
             :key="index"
             @click="onFileClick(file)"
-            :class="activeFile == file.id ? 'item active': 'item'">
+            :class="activeFile == file.idx ? 'item active': 'item'">
           <i :class="file.icon"></i> {{ file.name }}
         </li>
       </ul>
@@ -74,36 +74,8 @@ export default {
         name: undefined,
         avatar: undefined
       },
-      activeFile: null,
-      files: [
-        {
-          id: 1,
-          type: 'folder',
-          icon: 'fas fa-caret-right',
-          state: 'close',
-          name: 'sample.js',
-          files: [
-            {
-              id: 4,
-              type: 'file',
-              icon: 'fab fa-js',
-              name: 'sample.js',
-            }
-          ]
-        },
-        {
-          id: 2,
-          type: 'file',
-          icon: 'fab fa-js',
-          name: 'sample1.js',
-        },
-        {
-          id: 3,
-          type: 'file',
-          icon: 'fab fa-js',
-          name: 'sample2.js',
-        }
-      ],
+      activeFile: undefined,
+      files: undefined,
       code: '',
       cmOptions: {
         tabSize: 4,
@@ -116,6 +88,7 @@ export default {
   },
   created() {
     this.fetchUserDate();
+    this.fetchUserFiles()
     socket = io();
     socket.emit('message', 'hello, world');
   },
@@ -128,8 +101,32 @@ export default {
         this.user = result.data.user
       })
     },
+    fetchUserFile(idx) {
+      const baseURI = '/file';
+      this.$http.get(`${baseURI}/${idx}`)
+      .then((result) => {
+        //statusCode 비교가 필요함.
+        this.code = result.data.code
+      })
+    },
+    saveUserFile(idx) {
+      const baseURI = '/file';
+      this.$http.post(`${baseURI}/${idx}`, {code: this.code})
+      .then((result) => {
+        
+      })
+    },
+    fetchUserFiles() {
+      const baseURI = '/file';
+      this.$http.get(`${baseURI}`)
+      .then((result) => {
+        //statusCode 비교가 필요함.
+        this.files = result.data.files
+      })
+    },
     onFileClick(file) {
-      this.activeFile = file.id;
+      this.activeFile = file.idx;
+      this.fetchUserFile(file.idx)
       // if(file.type == 'folder')
       //   file.state = file.state == 'close' ? 'open' : 'close';
     },
@@ -139,6 +136,8 @@ export default {
     onCmCodeChange(newCode) {
       console.log('this is new code', newCode)
       this.code = newCode
+
+      this.saveUserFile(this.activeFile);
     }
   }
 }
