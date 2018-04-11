@@ -31,8 +31,8 @@
         <li class="header">
           My Files
           <span class="new-items">
-            <i class="fas fa-file"></i>
-            <i class="fas fa-folder-open"></i>
+            <i class="fas fa-file" @click="openMessageBox('준비중입니다.')"></i>
+            <i class="fas fa-folder-open" @click="openMessageBox('준비중입니다.')"></i>
           </span>
         </li>
         <li v-for="(file, index) in this.$store.state.files"
@@ -110,6 +110,9 @@ export default {
         idx : this.currentIdx,
         code : newCode
       }) : false
+    },
+    openMessageBox(contents) {
+      this.$store.commit('SHOW_MESSAGE_BOX', {contents})
     }
   }
 }

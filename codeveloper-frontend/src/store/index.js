@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
     files: [],
     code: '',
     dimmer: false,
-    messagebox: true
+    messagebox: false
   },
   mutations,
   actions
