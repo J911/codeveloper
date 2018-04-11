@@ -42,6 +42,12 @@
           <i :class="file.icon"></i> {{ file.name }}
         </li>
       </ul>
+      <div class="footer">
+        <span class="header">contributors</span>
+        <div class="contributors">
+          <img :src="this.$store.state.user.avatar" :alt="this.$store.state.user.name" :title="this.$store.state.user.name">
+        </div>
+      </div>
     </div>
     <div class="editor">
        <codemirror
