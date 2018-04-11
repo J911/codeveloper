@@ -15,11 +15,13 @@ export const store = new Vuex.Store({
         title: 'Message',
         contents: ''
     },
-    currentIdx: null,
+    contributors: [],
     files: [],
+    currentIdx: null,
     code: '',
     dimmer: false,
-    messagebox: false
+    messagebox: false,
+    registbox: false
   },
   mutations,
   actions

@@ -2,6 +2,7 @@
   <div id="IDE">
     <app-dimmer/>
     <app-messgebox />
+    <app-registbox />
     <nav>
       <a href="#" class="brand">
         codeveloper
@@ -46,6 +47,12 @@
         <span class="header">contributors</span>
         <div class="contributors">
           <img :src="user.avatar" :alt="user.name" :title="user.name">
+          <img v-for="(contributor, index) in contributors" 
+              :key="index" :src="contributor.user_avatar" 
+              :alt="contributor.user_name" 
+              :title="contributor.user_name">
+
+          <i class="fas fa-plus-square" @click="openRegistBox"></i>
         </div>
       </div>
     </div>
@@ -70,6 +77,7 @@
 <script>
 import Dimmer from '../components/Dimmer.vue'
 import MessageBox from '../components/MessageBox.vue'
+import RegistBox from '../components/RegistBox.vue'
 import 'codemirror/mode/javascript/javascript.js'
 import 'codemirror/theme/base16-dark.css'
 import io from 'socket.io-client'
@@ -79,7 +87,9 @@ export default {
   name: 'IDE',
   components: {
     'app-dimmer': Dimmer,
-    'app-messgebox': MessageBox
+    'app-messgebox': MessageBox,
+    'app-registbox': RegistBox
+
   },
   data () {
     return {
@@ -95,6 +105,7 @@ export default {
   created() {
     this.$store.dispatch('GET_USER')
     this.$store.dispatch('GET_FILE_LIST')
+    this.$store.dispatch('GET_CONTRIBUTORS')
     socket = io()
     socket.emit('message', 'hello, world')
   },
@@ -107,6 +118,9 @@ export default {
     },
     code() {
       return this.$store.state.code
+    },
+    contributors() {
+      return this.$store.state.contributors
     }
   },
   methods: {
@@ -122,6 +136,9 @@ export default {
     },
     openMessageBox(contents) {
       this.$store.commit('SHOW_MESSAGE_BOX', {contents})
+    },
+    openRegistBox() {
+      this.$store.commit('SHOW_REGIST_BOX')
     }
   }
 }

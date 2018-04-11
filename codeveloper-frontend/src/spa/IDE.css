@@ -106,6 +106,10 @@ nav span {
     border-radius: 3px;
     cursor: pointer;
 }
+.explorer .footer .contributors i {
+    font-size: 1.3rem;
+    cursor: pointer;
+}
 .editor {
     position: absolute;
     top: 40px;
