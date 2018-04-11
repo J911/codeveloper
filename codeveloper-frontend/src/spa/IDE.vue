@@ -7,8 +7,8 @@
       <ul class="menu">
         <li class="item">
           <div class="profile">
-            <img :src="user.avatar" :alt="user.name">
-            <span>{{ user.name }}</span>
+            <img :src="this.$store.state.user.avatar" :alt="this.$store.state.user.name">
+            <span>{{ this.$store.state.user.name }}</span>
           </div>
         </li>
         <li class="item">
@@ -33,19 +33,18 @@
             <i class="fas fa-folder-open"></i>
           </span>
         </li>
-        <li v-for="(file, index) in files" 
+        <li v-for="(file, index) in this.$store.state.files"
             :key="index"
-            @click="onFileClick(file)"
-            :class="activeFile == file.idx ? 'item active': 'item'">
+            @click="getFile(file.idx)"
+            :class="active == file.idx ? 'item active': 'item'">
           <i :class="file.icon"></i> {{ file.name }}
         </li>
       </ul>
     </div>
     <div class="editor">
-       <codemirror ref="myCm"
+       <codemirror
               :value="code" 
               :options="cmOptions"
-              @focus="onCmFocus"
               @input="onCmCodeChange">
       </codemirror>
     </div>
@@ -70,13 +69,6 @@ export default {
   name: 'IDE',
   data () {
     return {
-      user: {
-        name: undefined,
-        avatar: undefined
-      },
-      activeFile: undefined,
-      files: undefined,
-      code: '',
       cmOptions: {
         tabSize: 4,
         mode: 'text/javascript',
@@ -87,54 +79,30 @@ export default {
     }
   },
   created() {
-    this.fetchUserDate();
-    this.fetchUserFiles()
-    socket = io();
-    socket.emit('message', 'hello, world');
+    this.$store.dispatch('getUser')
+    this.$store.dispatch('getFileList')
+    socket = io()
+    socket.emit('message', 'hello, world')
+  },
+  computed: {
+    active() {
+      return this.$store.state.active
+    },
+    code() {
+      return this.$store.state.code
+    }
   },
   methods: {
-    fetchUserDate() {
-      const baseURI = '/user';
-      this.$http.get(`${baseURI}`)
-      .then((result) => {
-        //statusCode 비교가 필요함.
-        this.user = result.data.user
-      })
-    },
-    fetchUserFile(idx) {
-      const baseURI = '/file';
-      this.$http.get(`${baseURI}/${idx}`)
-      .then((result) => {
-        //statusCode 비교가 필요함.
-        this.code = result.data.code
-      })
-    },
-    saveUserFile(idx) {
-      const baseURI = '/file';
-      this.$http.post(`${baseURI}/${idx}`, {code: this.code});
-    },
-    fetchUserFiles() {
-      const baseURI = '/file';
-      this.$http.get(`${baseURI}`)
-      .then((result) => {
-        //statusCode 비교가 필요함.
-        this.files = result.data.files
-      })
-    },
-    onFileClick(file) {
-      this.activeFile = file.idx;
-      this.fetchUserFile(file.idx)
-      // if(file.type == 'folder')
-      //   file.state = file.state == 'close' ? 'open' : 'close';
-    },
-    onCmFocus(cm) {
-      console.log('the editor is focus!', cm)
+    getFile(idx) {
+      this.$store.state.active = idx
+      this.$store.dispatch('getFile', idx)
     },
     onCmCodeChange(newCode) {
-      console.log('this is new code', newCode)
-      this.code = newCode
-
-      this.saveUserFile(this.activeFile);
+      this.active !== null ? 
+      this.$store.dispatch('updateFile', {
+        idx : this.active,
+        code : newCode
+      }) : false
     }
   }
 }
