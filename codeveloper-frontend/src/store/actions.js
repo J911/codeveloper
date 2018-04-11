@@ -5,7 +5,7 @@ const actions = {
         axios.get(`/user`)
         .then((result) => {
           //statusCode 비교가 필요함.
-          return context.commit('updateUser',result.data.user)
+          return context.commit('UPDATE_USER',result.data.user)
         })
     },
     getFileList: function (context, payload) {
@@ -13,19 +13,19 @@ const actions = {
         .then((result) => {
             //statusCode 비교가 필요함.
             this.code = result.data.code
-            return context.commit('updateFileList', result.data.files)
+            return context.commit('UPDATE_FILE_LIST', result.data.files)
         })
     },
     getFile(context, payload) {
         axios.get(`/file/${payload}`)
         .then((result) => {
           //statusCode 비교가 필요함.
-          return context.commit('updateFile', result.data.code)
+          return context.commit('UPDATE_FILE', result.data.code)
         })
     },
     updateFile(context, payload) {
         axios.post(`/file/${payload.idx}`, {code: payload.code})
-        return context.commit('updateFile', payload.code)
+        return context.commit('UPDATE_FILE', payload.code)
     }
 }
 

@@ -1,12 +1,14 @@
+import * as types from './mutation-types'
+
 const mutations = {
-    updateUser: function (state, payload) {
+    [types.UPDATE_USER]: function (state, payload) {
         return state.user = payload
     },
-    updateFileList: function (state, payload){
-        return state.files = payload
-    },
-    updateFile: function (state, payload) {
+    [types.UPDATE_FILE]: function (state, payload) {
         return state.code = payload
+    },
+    [types.UPDATE_FILE_LIST]: function (state, payload){
+        return state.files = payload
     }
 }
 
