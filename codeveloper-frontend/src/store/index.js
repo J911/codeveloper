@@ -13,7 +13,8 @@ export const store = new Vuex.Store({
     },
     currentIdx: null,
     files: [],
-    code: ''
+    code: '',
+    dimmer: false
   },
   mutations,
   actions

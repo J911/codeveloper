@@ -12,6 +12,12 @@ const mutations = {
     },
     [types.UPDATE_FILE_LIST]: function (state, payload){
         return state.files = payload
+    },
+    [types.SHOW_DIMMER]: function (state){
+        return state.dimmer = true
+    },
+    [types.HIDE_DIMMER]: function (state){
+        return state.dimmer = false
     }
 
 }

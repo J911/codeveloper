@@ -1,5 +1,6 @@
 <template>
   <div id="IDE">
+    <app-dimmer/>
     <nav>
       <a href="#" class="brand">
         codeveloper
@@ -60,6 +61,7 @@
 </template>
 
 <script>
+import Dimmer from '../components/Dimmer.vue'
 import 'codemirror/mode/javascript/javascript.js'
 import 'codemirror/theme/base16-dark.css'
 import io from 'socket.io-client'
@@ -67,6 +69,9 @@ import io from 'socket.io-client'
 let socket;
 export default {
   name: 'IDE',
+  components: {
+    'app-dimmer': Dimmer
+  },
   data () {
     return {
       cmOptions: {
