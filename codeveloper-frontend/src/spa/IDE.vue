@@ -10,8 +10,8 @@
       <ul class="menu">
         <li class="item">
           <div class="profile">
-            <img :src="user.avatar" :alt="user.name">
-            <span>{{ user.name }}</span>
+            <img :src="user.user_avatar" :alt="user.user_name">
+            <span>{{ user.user_name }}</span>
           </div>
         </li>
         <li class="item">
@@ -46,7 +46,7 @@
       <div class="footer">
         <span class="header">contributors</span>
         <div class="contributors">
-          <img :src="user.avatar" :alt="user.name" :title="user.name">
+          <img :src="user.user_avatar" :alt="user.user_name" :title="user.user_name">
           <img v-for="(contributor, index) in contributors" 
               :key="index" :src="contributor.user_avatar" 
               :alt="contributor.user_name" 

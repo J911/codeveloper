@@ -10,7 +10,7 @@ passport.use(new GitHubStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile)
-    Auth.findOrCreate({ id: profile.id, name: profile.username, avatar: profile.photos[0].value }, function (err, user) {
+    Auth.findOrCreate({ user_id: profile.id, user_name: profile.username, user_avatar: profile.photos[0].value }, function (err, user) {
       return cb(err, user);
     });
   }
