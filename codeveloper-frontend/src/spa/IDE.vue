@@ -9,8 +9,8 @@
       <ul class="menu">
         <li class="item">
           <div class="profile">
-            <img :src="this.$store.state.user.avatar" :alt="this.$store.state.user.name">
-            <span>{{ this.$store.state.user.name }}</span>
+            <img :src="user.avatar" :alt="user.name">
+            <span>{{ user.name }}</span>
           </div>
         </li>
         <li class="item">
@@ -45,7 +45,7 @@
       <div class="footer">
         <span class="header">contributors</span>
         <div class="contributors">
-          <img :src="this.$store.state.user.avatar" :alt="this.$store.state.user.name" :title="this.$store.state.user.name">
+          <img :src="user.avatar" :alt="user.name" :title="user.name">
         </div>
       </div>
     </div>
@@ -99,6 +99,9 @@ export default {
     socket.emit('message', 'hello, world')
   },
   computed: {
+    user() {
+      return this.$store.state.user
+    },
     currentIdx() {
       return this.$store.state.currentIdx
     },
