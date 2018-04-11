@@ -4,7 +4,7 @@ const findOrCreate = (userInfo, callback) => {
     connection.query(sql, (err,users) => {
         if(users[0]) return callback(null, userInfo);
         else {
-            const sql = `INSERT INTO members(user_id, user_name, user_email, user_avatar) VALUES('${userInfo.id}', '${userInfo.name}','${userInfo.email}','${userInfo.avatar}')`;
+            const sql = `INSERT INTO members(user_id, user_name, user_avatar) VALUES('${userInfo.id}', '${userInfo.name}','${userInfo.avatar}')`;
             connection.query(sql, (err) => {
                 if(err) {
                     console.log(err);
