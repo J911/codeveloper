@@ -36,7 +36,7 @@
         <li v-for="(file, index) in this.$store.state.files"
             :key="index"
             @click="getFile(file.idx)"
-            :class="active == file.idx ? 'item active': 'item'">
+            :class="currentIdx == file.idx ? 'item active': 'item'">
           <i :class="file.icon"></i> {{ file.name }}
         </li>
       </ul>
@@ -79,14 +79,14 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('getUser')
-    this.$store.dispatch('getFileList')
+    this.$store.dispatch('GET_USER')
+    this.$store.dispatch('GET_FILE_LIST')
     socket = io()
     socket.emit('message', 'hello, world')
   },
   computed: {
-    active() {
-      return this.$store.state.active
+    currentIdx() {
+      return this.$store.state.currentIdx
     },
     code() {
       return this.$store.state.code
@@ -94,13 +94,12 @@ export default {
   },
   methods: {
     getFile(idx) {
-      this.$store.state.active = idx
-      this.$store.dispatch('getFile', idx)
+      this.$store.dispatch('GET_FILE', idx)
     },
     onCmCodeChange(newCode) {
-      this.active !== null ? 
-      this.$store.dispatch('updateFile', {
-        idx : this.active,
+      this.currentIdx !== null ? 
+      this.$store.dispatch('UPDATE_FILE', {
+        idx : this.currentIdx,
         code : newCode
       }) : false
     }

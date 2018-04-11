@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
         name: null,
         avatar: null
     },
-    active: null,
+    currentIdx: null,
     files: [],
     code: ''
   },
