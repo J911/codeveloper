@@ -5,3 +5,5 @@ export const UPDATE_FILE_LIST = 'UPDATE_FILE_LIST'
 
 export const SHOW_DIMMER = 'SHOW_DIMMER'
 export const HIDE_DIMMER = 'HIDE_DIMMER'
+export const SHOW_MESSAGE_BOX = 'SHOW_MESSAGE_BOX'
+export const HIDE_MESSAGE_BOX = 'HIDE_MESSAGE_BOX'

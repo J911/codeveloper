@@ -1,6 +1,7 @@
 <template>
   <div id="IDE">
     <app-dimmer/>
+    <app-messgebox />
     <nav>
       <a href="#" class="brand">
         codeveloper
@@ -62,6 +63,7 @@
 
 <script>
 import Dimmer from '../components/Dimmer.vue'
+import MessageBox from '../components/MessageBox.vue'
 import 'codemirror/mode/javascript/javascript.js'
 import 'codemirror/theme/base16-dark.css'
 import io from 'socket.io-client'
@@ -70,7 +72,8 @@ let socket;
 export default {
   name: 'IDE',
   components: {
-    'app-dimmer': Dimmer
+    'app-dimmer': Dimmer,
+    'app-messgebox': MessageBox
   },
   data () {
     return {

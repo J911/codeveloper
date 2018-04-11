@@ -18,6 +18,17 @@ const mutations = {
     },
     [types.HIDE_DIMMER]: function (state){
         return state.dimmer = false
+    },
+    [types.SHOW_MESSAGE_BOX]: function (state, payload){
+        state.dimmer = true
+        state.message.title = payload.title || 'Message'
+        state.message.contents = payload.contents
+        return state.messagebox = true
+        
+    },
+    [types.HIDE_MESSAGE_BOX]: function (state){
+        state.dimmer = false
+        return state.messagebox = false
     }
 
 }
