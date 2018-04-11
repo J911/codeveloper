@@ -1,4 +1,4 @@
-export default (code) => {
+export default (code) => { // 사실 이렇게 하면 안될거야... 더 고민해보자..
     switch(code){
         case 400:
             return "본인은 추가할 수 없습니다."
