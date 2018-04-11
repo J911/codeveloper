@@ -25,7 +25,7 @@ router.post('/contributor', (req, res, next)=> {
     const session = req.session.passport.user; 
     const contributor = req.body.contributor;
 
-    if(contributor == session.name) return res.status(400).end(); // 본인을 추가한 경우
+    if(contributor == session.user_name) return res.status(400).end(); // 본인을 추가한 경우
 
     const sql = `SELECT * FROM members WHERE user_name = '${contributor}'`;
     connection.query(sql, (err, user) => {
