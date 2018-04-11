@@ -37,7 +37,7 @@ export default {
             for(let n in this.contributors){
                 if(this.contributors[n].user_name == this.github){
                     this.github = ''
-                    return this.$store.commit('SHOW_MESSAGE_BOX', {contents:'이미 추가된 멤버입니다'})
+                    return this.$store.commit('SHOW_MESSAGE_BOX', {contents:'이미 추가된 멤버입니다.'})
                 }
             }
             this.$store.dispatch('ADD_CONTRIBUTOR', this.github)

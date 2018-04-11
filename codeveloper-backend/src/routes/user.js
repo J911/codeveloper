@@ -31,11 +31,16 @@ router.post('/contributor', (req, res, next)=> {
     connection.query(sql, (err, user) => {
         if(err) return res.status(500).end(); // DB 에러
         if(!user[0]) return res.status(404).end(); // 유저가 존재하지 않음
-        const sql = `INSERT INTO contributors(master, contributor) VALUES('${session.user_id}', '${user[0].user_id}')`;
-
-        connection.query(sql, (err) => {
+        const sql = `SELECT * FROM contributors WHERE master = '${session.user_id}' and contributor = '${user[0].user_id}'`;
+        connection.query(sql, (err, result) => {
             if(err) return res.status(500).end(); // DB 에러
-            return res.json({contributor: user[0]});
+            if(result[0]) return res.status(409).end(); // 중복
+            const sql = `INSERT INTO contributors(master, contributor) VALUES('${session.user_id}', '${user[0].user_id}')`;
+
+            connection.query(sql, (err) => {
+                if(err) return res.status(500).end(); // DB 에러
+                return res.json({contributor: user[0]});
+            });
         })
     });
 });

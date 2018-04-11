@@ -90,6 +90,8 @@ const actions = {
                     return context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: "권한이 존재하지 않습니다."})
                 case 404:
                     return context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: "유저가 존재하지 않습니다."})
+                case 409:
+                    return context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: "이미 추가된 멤버입니다."})
                 case 500:
                     return context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: "데이터베이스 에러가 발생했습니다."})
                 default:
