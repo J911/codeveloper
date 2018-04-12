@@ -10,7 +10,7 @@ const actions = {
         .then((result) => {
           return context.commit(mutationTypes.UPDATE_USER,result.data.user)
         })
-        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(e.response.status)}))
+        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(types.GET_USER,e.response.status)}))
     },
 
     [types.GET_FILE_LIST]: function (context, payload) {
@@ -19,7 +19,7 @@ const actions = {
             this.code = result.data.code
             return context.commit(mutationTypes.UPDATE_FILE_LIST, result.data.files)
         })
-        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(e.response.status)}))
+        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(types.GET_FILE_LIST,e.response.status)}))
 
     },
 
@@ -29,7 +29,7 @@ const actions = {
           context.commit(mutationTypes.UPDATE_CURRENT_IDX, payload)
           return context.commit(mutationTypes.UPDATE_FILE, result.data.code)
         })
-        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(e.response.status)}))
+        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(types.GET_FILE,e.response.status)}))
     },
 
     [types.UPDATE_FILE]: function (context, payload) {
@@ -42,7 +42,7 @@ const actions = {
         .then((result) => {
           return context.commit(mutationTypes.UPDATE_CONTRIBUTORS, result.data.contributors)
         })
-        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(e.response.status)}))
+        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(types.GET_CONTRIBUTORS,e.response.status)}))
     },
 
     [types.ADD_CONTRIBUTOR]: function (context, payload) {
@@ -51,7 +51,7 @@ const actions = {
             context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: "추가되었습니다!"})
             return context.commit(mutationTypes.ADD_CONTRIBUTOR, result.data.contributor)
         })
-        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(e.response.status)}))
+        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(types.ADD_CONTRIBUTOR,e.response.status)}))
     }
     
 }

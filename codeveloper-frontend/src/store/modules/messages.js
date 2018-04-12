@@ -1,0 +1,7 @@
+export const CANNOT_ADD_CONTRIBUTOR = "컨트리뷰터를 추가할 수 없습니다."
+export const CANNOT_ADD_CONTRIBUTOR_ME = "본인은 추가할 수 없습니다."
+export const NO_PERMITION = "권한이 존재하지 않습니다."
+export const NO_CONTRIBUTOR = "유저가 존재하지 않습니다."
+export const EXIST_CONTRIBUTOR = "이미 추가된 멤버입니다."
+export const DATABASE_ERROR = "데이터베이스 에러가 발생했습니다."
+export const DEFAULT_ERROR = "알수없는 에러가 발생했습니다."

@@ -1,17 +1,25 @@
-export default (code) => { // 사실 이렇게 하면 안될거야... 더 고민해보자..
+/**
+ * 만족스러운 코드는 아님.
+ * 방안1. action을 입력받에 그에 맞는 메시지 매핑
+ * 방안2. 백엔드 재개발(메시지를 반환하거나, 관련 에러키 반환)
+ * 
+ * 일단 방안 1로 진행.
+ */
+import * as messages from './messages'
+export default (action,code) => { // 중복되는 statusCode 발생시 action 검사를 통해 메시지 매핑할 것!
     switch(code){
         case 400:
-            return "본인은 추가할 수 없습니다."
+            return messages.CANNOT_ADD_CONTRIBUTOR_ME
         case 403:
-            return "권한이 존재하지 않습니다."
+            return messages.NO_PERMITION
         case 404:
-            return "유저가 존재하지 않습니다."
+            return messages.NO_CONTRIBUTOR
         case 409:
-            return "이미 추가된 멤버입니다."
+            return messages.EXIST_CONTRIBUTOR
         case 500:
-            return "데이터베이스 에러가 발생했습니다."
+            return messages.DATABASE_ERROR
         default:
-            return "알수없는 에러가 발생했습니다."
+            return messages.DEFAULT_ERROR
     }
 }
 
