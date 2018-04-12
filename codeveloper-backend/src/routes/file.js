@@ -27,7 +27,14 @@ router.get('/contribute', (req, res) => {
         return res.json({files: files});
     });
 });
-
+router.get('/contributor/:idx', (req, res) => {
+    /**
+     * 명세:
+     * 본인이 컨트리뷰터로 등록된 파일인지 검사해야함.
+     * 등록된 경우 파일을 반환.
+     * 등록 안된경우 403 반환.
+     */
+});
 router.get('/:idx', (req, res) => {
     const idx = req.params.idx;
     const session = req.session.passport.user;
@@ -39,7 +46,6 @@ router.get('/:idx', (req, res) => {
         });
     });
 });
-
 router.post('/:idx', (req, res) => {
     const idx = req.params.idx;
     const code = req.body.code;
