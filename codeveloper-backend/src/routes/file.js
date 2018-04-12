@@ -18,6 +18,16 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/contribute', (req, res) => {
+    // 본인이 기여자로 등록된 마스터의 파일을 가져오는 API
+    const session = req.session.passport.user;
+    const sql = `SELECT files.* FROM files INNER JOIN contributors ON contributors.master == files.uid WHERE contributors.contributor = ${session.user_id}`;
+    connection.query(sql, (err, files) => {
+        if(err) return res.status(500).end();
+        return res.json({files: files});
+    });
+});
+
 router.get('/:idx', (req, res) => {
     const idx = req.params.idx;
     const session = req.session.passport.user;
