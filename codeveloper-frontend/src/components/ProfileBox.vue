@@ -16,7 +16,7 @@ export default {
     ],
     computed: {
         profilebox() {
-            return this.$store.state.profileBox
+            return this.$store.state.profilebox
         },
         contributor() {
             return this.$store.state.contributors[this.contributorIdx]

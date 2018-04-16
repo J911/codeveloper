@@ -3,6 +3,7 @@
     <app-dimmer/>
     <app-messgebox />
     <app-registbox />
+    <app-profilebox contributorIdx="0" />
     <nav>
       <a href="#" class="brand">
         codeveloper
@@ -78,6 +79,7 @@
 import Dimmer from '../components/Dimmer.vue'
 import MessageBox from '../components/MessageBox.vue'
 import RegistBox from '../components/RegistBox.vue'
+import ProfileBox from '../components/ProfileBox.vue'
 import 'codemirror/mode/javascript/javascript.js'
 import 'codemirror/theme/base16-dark.css'
 import io from 'socket.io-client'
@@ -88,7 +90,8 @@ export default {
   components: {
     'app-dimmer': Dimmer,
     'app-messgebox': MessageBox,
-    'app-registbox': RegistBox
+    'app-registbox': RegistBox,
+    'app-profilebox': ProfileBox
 
   },
   data () {
