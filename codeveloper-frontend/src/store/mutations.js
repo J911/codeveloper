@@ -25,6 +25,8 @@ const mutations = {
         state.dimmer = true
         state.message.title = payload.title || 'Message'
         state.message.contents = payload.contents
+        state.profilebox = false
+        state.registbox = false
         return state.messagebox = true
         
     },
@@ -36,12 +38,24 @@ const mutations = {
     [types.SHOW_REGIST_BOX]: function (state){
         state.dimmer = true
         state.messagebox = false
+        state.profilebox = false
         return state.registbox = true
         
     },
     [types.HIDE_REGIST_BOX]: function (state){
         state.dimmer = false
         return state.registbox = false
+    },
+    [types.SHOW_PROFILE_BOX]: function (state){
+        state.dimmer = true
+        state.messagebox = false
+        state.registbox = false
+        return state.profilebox = true
+        
+    },
+    [types.HIDE_PROFILE_BOX]: function (state){
+        state.dimmer = false
+        return state.profilebox = false
     },
     [types.UPDATE_CONTRIBUTORS]: function (state, payload){
         return state.contributors = payload

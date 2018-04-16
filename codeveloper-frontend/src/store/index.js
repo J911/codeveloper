@@ -21,7 +21,8 @@ export const store = new Vuex.Store({
     code: '',
     dimmer: false,
     messagebox: false,
-    registbox: false
+    registbox: false,
+    profilebox: false
   },
   mutations,
   actions
