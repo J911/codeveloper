@@ -22,7 +22,8 @@ export const store = new Vuex.Store({
     dimmer: false,
     messagebox: false,
     registbox: false,
-    profilebox: true
+    profilebox: false,
+    activeContributor: null // 프로필로 merge 할 것 
   },
   mutations,
   actions

@@ -19,7 +19,7 @@ export default {
             return this.$store.state.profilebox
         },
         contributor() {
-            return this.$store.state.contributors[this.contributorIdx]
+            return this.$store.state.contributors[this.$store.state.activeContributor]
         }
     },
     methods: {

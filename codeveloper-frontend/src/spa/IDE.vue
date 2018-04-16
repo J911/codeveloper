@@ -3,7 +3,7 @@
     <app-dimmer/>
     <app-messgebox />
     <app-registbox />
-    <app-profilebox contributorIdx="0" />
+    <app-profilebox />
     <nav>
       <a href="#" class="brand">
         codeveloper
@@ -51,7 +51,8 @@
           <img v-for="(contributor, index) in contributors" 
               :key="index" :src="contributor.user_avatar" 
               :alt="contributor.user_name" 
-              :title="contributor.user_name">
+              :title="contributor.user_name"
+              @click="onClickContributor(index)">
 
           <i class="fas fa-plus-square" @click="openRegistBox"></i>
         </div>
@@ -91,8 +92,7 @@ export default {
     'app-dimmer': Dimmer,
     'app-messgebox': MessageBox,
     'app-registbox': RegistBox,
-    'app-profilebox': ProfileBox
-
+    'app-profilebox': ProfileBox,
   },
   data () {
     return {
@@ -142,6 +142,10 @@ export default {
     },
     openRegistBox() {
       this.$store.commit('SHOW_REGIST_BOX')
+    },
+    onClickContributor (idx){ // onchange로 바꿔야지
+      this.$store.commit('UPDATE_ACTIVE_CONTRIBUTOR', idx)
+      this.$store.commit('SHOW_PROFILE_BOX')
     }
   }
 }
