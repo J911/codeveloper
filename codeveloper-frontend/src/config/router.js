@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router'
 import Home from '../spa/Home.vue'
 import Login from '../spa/Login.vue'
-import IDE from '../spa/IDE.vue'
+import IDE from '../spa/IDE/IDE.vue'
 
 const routes = [
     { 
