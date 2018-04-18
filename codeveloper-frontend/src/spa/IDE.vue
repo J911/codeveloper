@@ -52,7 +52,7 @@
               :key="index" :src="contributor.user_avatar" 
               :alt="contributor.user_name" 
               :title="contributor.user_name"
-              @click="onClickContributor(index)">
+              @click="viewContributor(index)">
 
           <i class="fas fa-plus-square" @click="openRegistBox"></i>
         </div>
@@ -143,7 +143,7 @@ export default {
     openRegistBox() {
       this.$store.commit('SHOW_REGIST_BOX')
     },
-    onClickContributor (idx){ // onchange로 바꿔야지
+    viewContributor (idx){
       this.$store.commit('UPDATE_ACTIVE_CONTRIBUTOR', idx)
       this.$store.commit('SHOW_PROFILE_BOX')
     }

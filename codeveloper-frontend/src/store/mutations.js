@@ -14,7 +14,7 @@ const mutations = {
         return state.files = payload
     },
     [types.UPDATE_ACTIVE_CONTRIBUTOR]: function (state, payload){
-        return state.activeContributor = payload
+        return state.profilebox.contributor = payload
     },
 
     [types.SHOW_DIMMER]: function (state){
@@ -29,7 +29,7 @@ const mutations = {
         state.dimmer = true
         state.message.title = payload.title || 'Message'
         state.message.contents = payload.contents
-        state.profilebox = false
+        state.profilebox.active = false
         state.registbox = false
         return state.messagebox = true
         
@@ -42,7 +42,7 @@ const mutations = {
     [types.SHOW_REGIST_BOX]: function (state){
         state.dimmer = true
         state.messagebox = false
-        state.profilebox = false
+        state.profilebox.active = false
         return state.registbox = true
         
     },
@@ -54,12 +54,12 @@ const mutations = {
         state.dimmer = true
         state.messagebox = false
         state.registbox = false
-        return state.profilebox = true
+        return state.profilebox.active = true
         
     },
     [types.HIDE_PROFILE_BOX]: function (state){
         state.dimmer = false
-        return state.profilebox = false
+        return state.profilebox.active = false
     },
     [types.UPDATE_CONTRIBUTORS]: function (state, payload){
         return state.contributors = payload

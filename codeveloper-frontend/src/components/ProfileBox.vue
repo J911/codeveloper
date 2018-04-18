@@ -16,10 +16,10 @@ export default {
     ],
     computed: {
         profilebox() {
-            return this.$store.state.profilebox
+            return this.$store.state.profilebox.active
         },
         contributor() {
-            return this.$store.state.contributors[this.$store.state.activeContributor]
+            return this.$store.state.contributors[this.$store.state.profilebox.contributor]
         }
     },
     methods: {
