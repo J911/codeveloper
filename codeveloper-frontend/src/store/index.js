@@ -7,10 +7,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    user: {
-        name: null,
-        avatar: null
-    },
+    user: null,
     message: {
         title: 'Message',
         contents: ''
@@ -25,7 +22,8 @@ export const store = new Vuex.Store({
     profilebox: {
       active: false,
       contributor: null
-    }
+    },
+    socket
     // activeContributor: null // 프로필로 merge 할 것 
   },
   mutations,

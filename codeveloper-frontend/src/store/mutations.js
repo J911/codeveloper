@@ -1,4 +1,5 @@
 import * as types from './mutation-types'
+import io from 'socket.io-client'
 
 const mutations = {
     [types.UPDATE_USER]: function (state, payload) {
@@ -66,6 +67,11 @@ const mutations = {
     },
     [types.ADD_CONTRIBUTOR]: function (state, payload){
         return state.contributors.push(payload)
+    },
+    [types.INITIALIZE_SOCKET]: function (state){
+        state.socket = io()
+        state.socket.emit('message', 'hello, world')
+        state.socket.emit('join:room', {roomId: state.user.user_id})
     }
 
 }
