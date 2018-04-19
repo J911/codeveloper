@@ -1,12 +1,12 @@
 module.exports = function (socket) {
     console.log('a user connected',socket.request.session);
 
-    socket.on('join:channel', function(data) {
-        socket.join('channel' + data.channel);
+    socket.on('join:room', function(data) {
+        socket.join('room' + data.roomIdgitgtggtg);
     });
 
     socket.on('send:message', function(data) {
-        io.sockets.in('channel' + data.channel).emit('send:message', data.message);
+        io.sockets.in('room' + data.roomId).emit('send:message', data.message);
     });
 
     socket.on('disconnect', function(){
