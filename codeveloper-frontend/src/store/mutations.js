@@ -71,7 +71,10 @@ const mutations = {
     [types.INITIALIZE_SOCKET]: function (state){
         state.socket = io()
         state.socket.emit('message', 'hello, world')
-        state.socket.emit('join:room', {roomId: state.user.user_id})
+        return state.commit(types.JOIN_SOCKET_ROOM)
+    },
+    [types.JOIN_SOCKET_ROOM]: function (state) {
+        return state.socket.emit('join:room', {roomId: state.user.user_id})
     }
 
 }
