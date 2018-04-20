@@ -75,6 +75,9 @@ const mutations = {
     },
     [types.JOIN_SOCKET_ROOM]: function (state) {
         return state.socket.emit('join:room', {roomId: state.user.user_id})
+    },
+    [types.SEND_MESSAGE]: function (state, payload) {
+        return state.socket.emit('message', {message: payload})
     }
 
 }
