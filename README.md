@@ -32,5 +32,8 @@ Codeveloper - 당신의 팀과 co-develop하세요!
 - Axios
 - Vuex
 
+## 소개 Slide
+[https://www.slideshare.net/ssuser827c0b/codeveloper](https://www.slideshare.net/ssuser827c0b/codeveloper)
+
 ## 라이센스
 GNU General Public License v3.0
