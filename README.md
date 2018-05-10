@@ -1,6 +1,4 @@
-```
-현재 개발중인 프로젝트입니다.
-```
+> 현재 개발중인 프로젝트입니다.
 
 # codeveloper
 Codeveloper - 당신의 팀과 co-develop하세요!
