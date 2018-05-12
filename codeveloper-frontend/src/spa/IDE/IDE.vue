@@ -68,8 +68,10 @@
     <div class="console">
       <div class="header">
         <ul class="menu">
-          <li class="item active">TERMINAL</li>
-          <li class="item">CHAT</li>
+          <li :class="`item ${activeConsoleMenu == 'terminal'? 'active': '' }`"
+              @click="switchConsoleMenu('terminal')">TERMINAL</li>
+          <li :class="`item ${activeConsoleMenu == 'chat'? 'active': '' }`"
+              @click="switchConsoleMenu('chat')">CHAT</li>
         </ul>
       </div>
     </div>

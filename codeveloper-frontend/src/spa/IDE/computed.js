@@ -10,5 +10,9 @@ export default {
     },
     contributors() {
       return this.$store.state.contributors
+    },
+    activeConsoleMenu() {
+      return this.$store.state.activeConsoleMenu
     }
+    
   }

@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
         title: 'Message',
         contents: ''
     },
+    activeConsoleMenu: 'terminal',
     contributors: [],
     files: [],
     currentIdx: null,

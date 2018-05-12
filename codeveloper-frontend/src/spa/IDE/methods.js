@@ -18,5 +18,8 @@ export default {
     viewContributor (idx){
       this.$store.commit('UPDATE_ACTIVE_CONTRIBUTOR', idx)
       this.$store.commit('SHOW_PROFILE_BOX')
+    },
+    switchConsoleMenu (menu) {
+      this.$store.commit('SWITCH_CONSOLE_MENU', menu)
     }
   }

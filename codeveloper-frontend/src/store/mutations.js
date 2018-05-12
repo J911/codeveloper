@@ -69,6 +69,9 @@ const mutations = {
     [types.ADD_CONTRIBUTOR]: function (state, payload){
         return state.contributors.push(payload)
     },
+    [types.SWITCH_CONSOLE_MENU]: function (state, payload){
+        return state.activeConsoleMenu = payload
+    },
     [types.INITIALIZE_SOCKET]: function (state){
         state.socket = io()
         state.socket.emit('message', 'hello, world')
