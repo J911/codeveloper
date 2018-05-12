@@ -24,6 +24,7 @@ const mutations = {
     [types.HIDE_DIMMER]: function (state){
         state.registbox = false
         state.messagebox = false
+        state.profilebox.active = false
         return state.dimmer = false
     },
     [types.SHOW_MESSAGE_BOX]: function (state, payload){

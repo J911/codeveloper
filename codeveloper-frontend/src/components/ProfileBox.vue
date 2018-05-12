@@ -1,11 +1,11 @@
 <template>
   <div v-if="profilebox" class="profileBox">
-    <img :src="contributor.user_avatar" :alt="contributor.user_name">
+    <img :src="contributor.user_avatar" :alt="contributor.user_name" class="profileImage">
     <p class="profile">
         {{ contributor.user_name }}
     </p>
     <button @click="hideProfileBox">
-        확인
+        닫기
     </button>
   </div>
 </template>

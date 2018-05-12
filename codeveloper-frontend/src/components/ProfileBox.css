@@ -2,15 +2,16 @@
     position: fixed;
     z-index: 99999;
     min-height: 100px;
-    min-width: 400px;
+    min-width: 200px;
     top: 50%;
     left: 50%;
     margin-top: -200px;
-    margin-left: -200px;
+    margin-left: -100px;
     background-color: #fff;
 
     border-radius: 3px;
     padding: 20px;
+    text-align: center;
 }
 .profileBox h1 {
     font-size: 1.4rem;
@@ -31,7 +32,7 @@
     height: 30px;
     margin: 0 auto;
     border: none;
-    background-color: rgb(48, 168, 48);
+    background-color: rgb(214, 64, 64);
     border-radius: 3px;
     font-weight: 600;
     color: white;
@@ -41,5 +42,8 @@
     outline: none;
 }
 .profileBox button:active {
-    background-color: rgb(39, 133, 39);
+    background-color: rgb(136, 36, 36);
+}
+.profileBox .profileImage {
+    width: 200px;
 }
