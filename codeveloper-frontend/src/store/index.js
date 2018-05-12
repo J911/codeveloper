@@ -23,7 +23,7 @@ export const store = new Vuex.Store({
       active: false,
       contributor: null
     },
-    socket
+    socket: null
     // activeContributor: null // 프로필로 merge 할 것 
   },
   mutations,
