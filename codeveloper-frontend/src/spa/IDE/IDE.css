@@ -133,7 +133,16 @@ nav span {
     list-style: none;
     color: rgb(171, 171, 171);
     margin: 0;
+    padding: 20px 20px 0 20px;
+}
+.console .body {
+    color: rgb(171, 171, 171);
     padding: 20px;
+}
+.console .body .chat{
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
 }
 .console .header ul.menu li.item{
     display: inline-block;

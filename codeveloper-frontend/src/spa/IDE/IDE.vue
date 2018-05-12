@@ -74,6 +74,14 @@
               @click="switchConsoleMenu('chat')">CHAT</li>
         </ul>
       </div>
+      <div class="body">
+          <ul class="chat">
+            <li>
+              jaemin: test
+            </li>
+          </ul>
+          <input type="text" class="chatInput">
+      </div>
     </div>
   </div>
 </template>
