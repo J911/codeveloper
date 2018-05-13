@@ -3,16 +3,16 @@ export default {
       return this.$store.state.user
     },
     currentIdx() {
-      return this.$store.state.currentIdx
+      return this.$store.state.file.currentIdx
     },
     code() {
-      return this.$store.state.code
+      return this.$store.state.file.code
     },
     contributors() {
       return this.$store.state.contributors
     },
-    activeConsoleMenu() {
-      return this.$store.state.activeConsoleMenu
+    consoleMenu() {
+      return this.$store.state.env.consoleMenu
     }
     
   }

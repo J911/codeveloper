@@ -16,7 +16,7 @@
 export default {
     computed: {
         messagebox() {
-            return this.$store.state.messagebox
+            return this.$store.state.env.messagebox
         },
         title() {
             return this.$store.state.message.title

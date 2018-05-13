@@ -37,7 +37,7 @@
             <i class="fas fa-folder-open" @click="openMessageBox('준비중입니다.')"></i>
           </span>
         </li>
-        <li v-for="(file, index) in this.$store.state.files"
+        <li v-for="(file, index) in this.$store.state.file.files"
             :key="index"
             @click="getFile(file.idx)"
             :class="currentIdx == file.idx ? 'item active': 'item'">
@@ -68,9 +68,9 @@
     <div class="console">
       <div class="header">
         <ul class="menu">
-          <li :class="`item ${activeConsoleMenu == 'terminal'? 'active': '' }`"
+          <li :class="`item ${consoleMenu == 'terminal'? 'active': '' }`"
               @click="switchConsoleMenu('terminal')">TERMINAL</li>
-          <li :class="`item ${activeConsoleMenu == 'chat'? 'active': '' }`"
+          <li :class="`item ${consoleMenu == 'chat'? 'active': '' }`"
               @click="switchConsoleMenu('chat')">CHAT</li>
         </ul>
       </div>

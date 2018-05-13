@@ -22,7 +22,7 @@ export default {
     },
     computed: {
         registbox() {
-            return this.$store.state.registbox
+            return this.$store.state.env.registbox
         },
         contributors() {
             return this.$store.state.contributors

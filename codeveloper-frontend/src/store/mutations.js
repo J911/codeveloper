@@ -6,71 +6,71 @@ const mutations = {
         return state.user = payload
     },
     [types.UPDATE_CURRENT_IDX]: function (state, payload) {
-        return state.currentIdx = payload
+        return state.file.currentIdx = payload
     },
     [types.UPDATE_FILE]: function (state, payload) {
-        return state.code = payload
+        return state.file.code = payload
     },
     [types.UPDATE_FILE_LIST]: function (state, payload){
-        return state.files = payload
+        return state.file.files = payload
     },
     [types.UPDATE_ACTIVE_CONTRIBUTOR]: function (state, payload){
-        return state.profilebox.contributor = payload
+        return state.env.profilebox.contributor = payload
     },
 
     [types.SHOW_DIMMER]: function (state){
-        return state.dimmer = true
+        return state.env.dimmer = true
     },
     [types.HIDE_DIMMER]: function (state){
-        state.registbox = false
-        state.messagebox = false
-        state.profilebox.active = false
-        return state.dimmer = false
+        state.env.registbox = false
+        state.env.messagebox = false
+        state.env.profilebox.active = false
+        return state.env.dimmer = false
     },
     [types.SHOW_MESSAGE_BOX]: function (state, payload){
-        state.dimmer = true
+        state.env.dimmer = true
         state.message.title = payload.title || 'Message'
         state.message.contents = payload.contents
-        state.profilebox.active = false
-        state.registbox = false
-        return state.messagebox = true
+        state.env.profilebox.active = false
+        state.env.registbox = false
+        return state.env.messagebox = true
         
     },
     [types.HIDE_MESSAGE_BOX]: function (state){
-        state.dimmer = false
-        state.messagebox = false
-        return state.messagebox = false
+        state.env.dimmer = false
+        state.env.messagebox = false
+        return state.env.messagebox = false
     },
     [types.SHOW_REGIST_BOX]: function (state){
-        state.dimmer = true
-        state.messagebox = false
-        state.profilebox.active = false
-        return state.registbox = true
+        state.env.dimmer = true
+        state.env.messagebox = false
+        state.env.profilebox.active = false
+        return state.env.registbox = true
         
     },
     [types.HIDE_REGIST_BOX]: function (state){
-        state.dimmer = false
-        return state.registbox = false
+        state.env.dimmer = false
+        return state.env.registbox = false
     },
     [types.SHOW_PROFILE_BOX]: function (state){
-        state.dimmer = true
-        state.messagebox = false
-        state.registbox = false
-        return state.profilebox.active = true
+        state.env.dimmer = true
+        state.env.messagebox = false
+        state.env.registbox = false
+        return state.env.profilebox.active = true
         
     },
     [types.HIDE_PROFILE_BOX]: function (state){
-        state.dimmer = false
-        return state.profilebox.active = false
+        state.env.dimmer = false
+        return state.env.profilebox.active = false
     },
     [types.UPDATE_CONTRIBUTORS]: function (state, payload){
-        return state.contributors = payload
+        return state.env.contributors = payload
     },
     [types.ADD_CONTRIBUTOR]: function (state, payload){
-        return state.contributors.push(payload)
+        return state.env.contributors.push(payload)
     },
     [types.SWITCH_CONSOLE_MENU]: function (state, payload){
-        return state.activeConsoleMenu = payload
+        return state.env.consoleMenu = payload
     },
     [types.INITIALIZE_SOCKET]: function (state){
         state.socket = io()

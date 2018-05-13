@@ -12,18 +12,33 @@ export const store = new Vuex.Store({
         title: 'Message',
         contents: ''
     },
-    activeConsoleMenu: 'terminal',
-    contributors: [],
-    files: [],
-    currentIdx: null,
-    code: '',
-    dimmer: false,
-    messagebox: false,
-    registbox: false,
-    profilebox: {
-      active: false,
-      contributor: null
+    file: {
+      files: [],
+      code: '',
+      currentIdx: null
     },
+    env: {
+      dimmer: false,
+      consoleMenu: 'terminal',
+      messagebox: false,
+      registbox: false,
+      profilebox: {
+        active: false,
+        contributor: null
+      },
+    },
+    // activeConsoleMenu: 'terminal',
+    contributors: [],
+    // files: [],
+    // currentIdx: null,
+    // code: '',
+    // dimmer: false,
+    // messagebox: false,
+    // registbox: false,
+    // profilebox: {
+    //   active: false,
+    //   contributor: null
+    // },
     socket: null
     // activeContributor: null // 프로필로 merge 할 것 
   },

@@ -8,7 +8,7 @@ export default {
   name: 'Dimmer',
   computed: {
       dimmer() {
-          return this.$store.state.dimmer
+          return this.$store.state.env.dimmer
       }
   },
   methods: {
