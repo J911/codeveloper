@@ -96,6 +96,7 @@ import 'codemirror/theme/base16-dark.css'
 
 import methods from './methods'
 import computed from './computed'
+import socket from './socket'
 
 let socket;
 export default {
@@ -122,6 +123,8 @@ export default {
     this.$store.dispatch('GET_FILE_LIST')
     this.$store.dispatch('GET_CONTRIBUTORS')
     this.$store.commit('INITIALIZE_SOCKET')
+
+    socket.receiver(this.$store.state.socket)
   },
   computed,
   methods
