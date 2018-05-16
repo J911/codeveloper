@@ -96,7 +96,6 @@ import 'codemirror/theme/base16-dark.css'
 
 import methods from './methods'
 import computed from './computed'
-import socket from './socket'
 
 export default {
   name: 'IDE',
@@ -121,9 +120,10 @@ export default {
     this.$store.dispatch('GET_USER')
     this.$store.dispatch('GET_FILE_LIST')
     this.$store.dispatch('GET_CONTRIBUTORS')
-    this.$store.commit('INITIALIZE_SOCKET')
+    // this.$store.commit('INITIALIZE_SOCKET') // GET_USER action 이후로 변경
+    this.$store.commit('UPDATE_CODE', 'test')
 
-    socket.receiver(this.$store.state.socket)
+    // socket.receiver(this.$store.state.socket)
   },
   computed,
   methods
