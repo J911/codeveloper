@@ -7,7 +7,10 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    user: null,
+    user: {
+      user_id: null,
+      user_avatar: null
+    },
     message: {
         title: 'Message',
         contents: ''
