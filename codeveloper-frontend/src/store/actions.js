@@ -8,7 +8,8 @@ const actions = {
     [types.GET_USER]: function (context) {
         axios.get(`/user`)
         .then((result) => {
-          return context.commit(mutationTypes.UPDATE_USER,result.data.user)
+            context.commit(mutationTypes.INITIALIZE_SOCKET,result.data.user.user_id)
+            return context.commit(mutationTypes.UPDATE_USER,result.data.user)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errorMessages(types.GET_USER,e.response.status)}))
     },

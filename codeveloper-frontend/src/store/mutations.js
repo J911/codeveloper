@@ -17,7 +17,10 @@ const mutations = {
     [types.UPDATE_ACTIVE_CONTRIBUTOR]: function (state, payload){
         return state.env.profilebox.contributor = payload
     },
-
+    [types.UPDATE_CODE]: function (state, payload){
+        console.log("OK")
+        return state.file.code = payload
+    },
     [types.SHOW_DIMMER]: function (state){
         return state.env.dimmer = true
     },
@@ -72,13 +75,10 @@ const mutations = {
     [types.SWITCH_CONSOLE_MENU]: function (state, payload){
         return state.env.consoleMenu = payload
     },
-    [types.INITIALIZE_SOCKET]: function (state){
+    [types.INITIALIZE_SOCKET]: function (state, payload){
         state.socket = io()
         state.socket.emit('message', 'hello, world')
-        return state.commit(types.JOIN_SOCKET_ROOM)
-    },
-    [types.JOIN_SOCKET_ROOM]: function (state) {
-        return state.socket.emit('join:room', {roomId: state.user.user_id})
+        return state.socket.emit('join:room', {roomId: payload})
     },
     [types.SEND_MESSAGE]: function (state, payload) {
         return state.socket.emit('send:message', {message: payload})
