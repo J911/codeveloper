@@ -98,7 +98,6 @@ import methods from './methods'
 import computed from './computed'
 import socket from './socket'
 
-let socket;
 export default {
   name: 'IDE',
   components: {
