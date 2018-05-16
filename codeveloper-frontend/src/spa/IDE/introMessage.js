@@ -1,3 +1,4 @@
+export const introMessage = `
 # INTRO MESSAGE
 
 # 코드 벨러퍼에 오신 것을 환영합니다!
@@ -20,4 +21,5 @@
 - https://github.com/
 # Codeveloper 레파지토리
 - https://github.com/J911/codeveloper
-
+`
+// webpack 없이 파일로 관리할 방법이 없을까..
