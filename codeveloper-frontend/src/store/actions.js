@@ -8,6 +8,7 @@ const actions = {
     [types.GET_USER]: function (context) {
         axios.get(`/user`)
         .then((result) => {
+            setTimeout(()=>context.commit(mutationTypes.HIDE_LOADING), 1000)
             return context.commit(mutationTypes.UPDATE_USER,result.data.user)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_USER,e.response.data.errorCode)}))

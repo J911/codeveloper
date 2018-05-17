@@ -1,6 +1,7 @@
 <template>
   <div id="IDE">
-    <app-dimmer/>
+    <app-loading />
+    <app-dimmer />
     <app-messgebox />
     <app-registbox />
     <app-profilebox />
@@ -88,6 +89,7 @@
 
 <script>
 import Dimmer from '../../components/Dimmer.vue'
+import Loading from '../../components/Loading.vue'
 import MessageBox from '../../components/MessageBox.vue'
 import RegistBox from '../../components/RegistBox.vue'
 import ProfileBox from '../../components/ProfileBox.vue'
@@ -102,6 +104,7 @@ export default {
   name: 'IDE',
   components: {
     'app-dimmer': Dimmer,
+    'app-loading': Loading,
     'app-messgebox': MessageBox,
     'app-registbox': RegistBox,
     'app-profilebox': ProfileBox,

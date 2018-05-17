@@ -31,6 +31,12 @@ const mutations = {
         state.env.profilebox.active = false
         return state.env.dimmer = false
     },
+    [types.SHOW_LOADING]: function (state){
+        return state.env.loading = true
+    },
+    [types.HIDE_LOADING]: function (state){
+        return state.env.loading = false
+    },
     [types.SHOW_MESSAGE_BOX]: function (state, payload){
         state.env.dimmer = true
         state.message.title = payload.title || 'Message'

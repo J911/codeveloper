@@ -20,6 +20,7 @@ export const store = new Vuex.Store({
       currentIdx: null
     },
     env: {
+      loading: true,
       dimmer: false,
       consoleMenu: 'terminal',
       messagebox: false,

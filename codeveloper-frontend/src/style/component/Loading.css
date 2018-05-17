@@ -1,0 +1,24 @@
+#loading {
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background-color: rgb(41, 39, 39);
+    color: white;
+    text-align: center;
+    line-height: 100vh;
+    animation: resize;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+@keyframes resize {
+    0% {
+        font-size: 20px;
+    }
+    100% {
+        font-size: 50px;
+    }
+}
