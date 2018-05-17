@@ -13,5 +13,10 @@ router.use('/ide', (req, res, next)=> {
 router.use('/auth', auth);
 router.use('/user', user);
 router.use('/file', file);
+router.get('/test', (req, res)=> {
+    return res.status(404).json({
+        errorCode: 1
+    })
+})
 
 module.exports = router;
