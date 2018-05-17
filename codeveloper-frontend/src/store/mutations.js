@@ -11,7 +11,7 @@ const mutations = {
         return state.file.currentIdx = payload
     },
     [types.UPDATE_FILE]: function (state, payload) {
-        return state.file.code = payload
+        return state.ide.code = payload
     },
     [types.UPDATE_FILE_LIST]: function (state, payload){
         return state.file.files = payload
@@ -20,7 +20,7 @@ const mutations = {
         return state.env.profilebox.contributor = payload
     },
     [types.UPDATE_CODE]: function (state, payload){
-        return state.file.code = payload
+        return state.ide.code = payload
     },
     [types.SHOW_DIMMER]: function (state){
         return state.env.dimmer = true

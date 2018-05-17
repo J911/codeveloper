@@ -61,7 +61,7 @@
     <div class="editor">
        <codemirror
               :value="code" 
-              :options="cmOptions"
+              :options="ideOption"
               @input="onCmCodeChange">
       </codemirror>
     </div>
@@ -105,17 +105,6 @@ export default {
     'app-messgebox': MessageBox,
     'app-registbox': RegistBox,
     'app-profilebox': ProfileBox,
-  },
-  data () {
-    return {
-      cmOptions: {
-        tabSize: 4,
-        mode: 'text/javascript',
-        theme: 'base16-dark',
-        lineNumbers: true,
-        line: true,
-      }
-    }
   },
   created() {
     this.$store.dispatch('GET_USER')

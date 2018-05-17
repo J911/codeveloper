@@ -17,7 +17,6 @@ export const store = new Vuex.Store({
     },
     file: {
       files: [],
-      code: '',
       currentIdx: null
     },
     env: {
@@ -28,22 +27,20 @@ export const store = new Vuex.Store({
       profilebox: {
         active: false,
         contributor: null
-      },
+      }
     },
-    // activeConsoleMenu: 'terminal',
+    ide: {
+      code: '',
+      options: {
+        tabSize: 4,
+        mode: 'text/javascript',
+        theme: 'base16-dark',
+        lineNumbers: true,
+        line: true
+      }
+    },
     contributors: [],
-    // files: [],
-    // currentIdx: null,
-    // code: '',
-    // dimmer: false,
-    // messagebox: false,
-    // registbox: false,
-    // profilebox: {
-    //   active: false,
-    //   contributor: null
-    // },
     socket: null
-    // activeContributor: null // 프로필로 merge 할 것 
   },
   mutations,
   actions
