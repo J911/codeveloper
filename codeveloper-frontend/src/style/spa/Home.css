@@ -8,7 +8,7 @@ a {
     color: black;
 }
 header {
-    background-image: url('../assets/header_bg.png');
+    background-image: url('../../assets/header_bg.png');
     background-position: center;
     text-align: center;
     padding: 100px 20px;

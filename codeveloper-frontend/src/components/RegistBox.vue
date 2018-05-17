@@ -47,4 +47,4 @@ export default {
 }
 </script>
 
-<style src="./RegistBox.css" scoped></style>
+<style src="../style/component/RegistBox.css" scoped></style>

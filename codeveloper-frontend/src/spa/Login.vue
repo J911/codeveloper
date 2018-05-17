@@ -33,4 +33,4 @@ export default {
 }
 </script>
 
-<style src="./Login.css" scoped></style>
+<style src="../style/spa/Login.css" scoped></style>

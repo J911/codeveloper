@@ -30,4 +30,4 @@ export default {
 }
 </script>
 
-<style src="./ProfileBox.css" scoped></style>
+<style src="../style/component/ProfileBox.css" scoped></style>

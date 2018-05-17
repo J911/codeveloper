@@ -131,4 +131,4 @@ export default {
 }
 </script>
 
-<style src="./IDE.css" scope></style>
+<style src="../../style/spa/IDE.css" scope></style>

@@ -70,4 +70,4 @@ export default {
 }
 </script>
 
-<style src="./Home.css" scoped></style>
+<style src="../style/spa/Home.css" scoped></style>

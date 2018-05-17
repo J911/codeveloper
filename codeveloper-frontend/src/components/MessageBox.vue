@@ -33,4 +33,4 @@ export default {
 }
 </script>
 
-<style src="./MessageBox.css" scoped></style>
+<style src="../style/component/MessageBox.css" scoped></style>

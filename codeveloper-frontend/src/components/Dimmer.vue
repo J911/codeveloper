@@ -19,4 +19,4 @@ export default {
 }
 </script>
 
-<style src="./Dimmer.css" scoped></style>
+<style src="../style/component/Dimmer.css" scoped></style>

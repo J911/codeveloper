@@ -22,4 +22,4 @@
   
 </template>
 
-<style src="./Nav.css" scoped></style>
+<style src="../style/component/Nav.css" scoped></style>
