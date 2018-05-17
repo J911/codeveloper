@@ -9,10 +9,10 @@
                 <i class="fab fa-github"></i>
                 Github
             </h1>
-            <p>Github 계정만 있으면 바로 시작할 수 있습니다!</p>
+            <p>{{ ko.LOGIN_INTRODUCE }}</p>
             
             <a href="/auth/github">
-                <i class="fab fa-github"></i> 로그인
+                <i class="fab fa-github"></i> {{ ko.LOGIN_TEXT }}
             </a>
             
         </div>
@@ -25,10 +25,17 @@
 
 <script>
 import Nav from '../components/Nav.vue';
+import * as lang from '../locale'
+
 export default {
   name: 'Login',
   components: {
       'app-nav': Nav
+  },
+  computed: {
+    ko() {
+        return lang.ko
+    }
   }
 }
 </script>

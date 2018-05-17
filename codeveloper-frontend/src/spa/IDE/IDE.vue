@@ -96,7 +96,7 @@ import 'codemirror/theme/base16-dark.css'
 import methods from './methods'
 import computed from './computed'
 
-import * as introMessage from './intro-message'
+import * as lang from '../../locale'
 
 export default {
   name: 'IDE',
@@ -122,7 +122,7 @@ export default {
     this.$store.dispatch('GET_FILE_LIST')
     this.$store.dispatch('GET_CONTRIBUTORS')
     // this.$store.commit('INITIALIZE_SOCKET') // GET_USER action 이후로 변경
-    this.$store.commit('UPDATE_CODE', introMessage.ko)
+    this.$store.commit('UPDATE_CODE', lang.ko.IDE_INTRO_MESSAGE)
 
     // socket.receiver(this.$store.state.socket)
   },

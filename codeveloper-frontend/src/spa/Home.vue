@@ -3,9 +3,9 @@
     <app-nav />
     <header>
         <h1>
-            당신의 팀과 co-develop하세요!
+            {{ ko.CODEVELOPER_SLOGAN }}
         </h1>
-        <p><b>codeveloper.io</b>는 실시간 협업코딩 솔루션입니다.</p>
+        <p>{{ ko.CODEVELOPER_SHORT_INTRODUCE }}</p>
         <div class="btn-group">
             <router-link to="login"><button> <i class="fa fa-code"></i> start code</button></router-link>
             <a href="#introduce"><button class="gray">what the codeveloper</button></a>
@@ -15,12 +15,12 @@
         <section id="introduce">
             <i class="fa fa-code"></i>
             <h1>codeveloper?</h1>
-            <p>codeveloper는 여러 그룹이 동시에 소스코드를 개발 및 수정 할 수 있도록 개발된 웹 IDE입니다.</p>
-            <p>실시간 코드 동기화와 컴파일을 codeveloper에서 시작해보세요!</p>
+            <p>{{ ko.CODEVELOPER_INTRODUCE }}</p>
+            <p>{{ ko.CODEVELOPER_CONTENTS }}</p>
         </section>
         <hr>
         <section id="language">
-            <h1>현재 지원언어</h1>
+            <h1>{{ ko. CODEVELOPER_LANGUAGES }}</h1>
             <ul class="languages">
                 <li class="item" v-for="(lang, index) in languages" :key="index">
                     <span class="icon" 
@@ -30,7 +30,7 @@
                     <p>{{ lang.text }}</p>
                 </li>
             </ul>
-            <p class="sub-contents">원하는 언어가 없나요?</p>
+            <p class="sub-contents">{{ ko.CODEVELOPER_NO_LANGUAGE }}</p>
         </section>
     </article>
     <footer>
@@ -41,6 +41,8 @@
 
 <script>
 import Nav from '../components/Nav.vue';
+import * as lang from '../locale'
+
 export default {
   name: 'Home',
   components: {
@@ -65,6 +67,11 @@ export default {
               text: 'Python'
           },
       ]
+    }
+  },
+  computed: {
+    ko() {
+        return lang.ko
     }
   }
 }
