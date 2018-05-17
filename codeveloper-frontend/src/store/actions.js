@@ -48,7 +48,7 @@ const actions = {
     [types.ADD_CONTRIBUTOR]: function (context, payload) {
         axios.post(`/user/contributor`, {contributor: payload})
         .then((result) => {
-            context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: "추가되었습니다!"})
+            context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: "Success!"})
             return context.commit(mutationTypes.ADD_CONTRIBUTOR, result.data.contributor)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.ADD_CONTRIBUTOR,e.response.data.errorCode)}))
