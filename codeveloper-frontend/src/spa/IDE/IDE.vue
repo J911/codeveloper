@@ -76,11 +76,11 @@
       </div>
       <div class="body">
           <ul class="chat">
-            <li>
+            <!-- <li>
               jaemin: test
             </li>
           </ul>
-          <input type="text" class="chatInput">
+          <input type="text" class="chatInput"> -->
       </div>
     </div>
   </div>
