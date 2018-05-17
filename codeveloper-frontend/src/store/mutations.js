@@ -1,6 +1,6 @@
 import * as types from './mutation-types'
 import io from 'socket.io-client'
-import {receiver} from './modules/socket'
+import socketReciver from './modules/socket-reciver'
 
 const mutations = {
     [types.UPDATE_USER]: function (state, payload) {
@@ -78,7 +78,7 @@ const mutations = {
     [types.INITIALIZE_SOCKET]: function (state, payload){
         state.socket = io()
         state.socket.emit('message', 'hello, world')
-        receiver(state.socket)
+        socketReciver(state.socket)
         return state.socket.emit('join:room', {roomId: payload})        
     },
     [types.SEND_MESSAGE]: function (state, payload) {

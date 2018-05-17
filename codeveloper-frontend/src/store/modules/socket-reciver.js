@@ -1,4 +1,4 @@
-export const receiver = socket => {
+export default socket => {
     socket.on('send:message', msg => {
         // msg
     })
