@@ -5,11 +5,13 @@
         {{ contributor.user_name }}
     </p>
     <button @click="hideProfileBox">
-        닫기
+        {{ locale.CLOSE_TEXT }}
     </button>
   </div>
 </template>
 <script>
+import * as lang from '../locale'
+
 export default {
     props: [
         'contributorIdx'
@@ -20,6 +22,9 @@ export default {
         },
         contributor() {
             return this.$store.state.contributors[this.$store.state.profilebox.contributor]
+        },
+        locale() {
+            return lang.ko
         }
     },
     methods: {

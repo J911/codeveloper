@@ -1,3 +1,5 @@
+import * as lang from '../../locale'
+
 export default {
     user() {
       return this.$store.state.user
@@ -16,5 +18,11 @@ export default {
     },
     ideOption () {
       return this.$store.state.ide.options
+    },
+    files () {
+      return this.$store.state.file.files
+    },
+    locale () {
+      return lang.ko
     }
   }

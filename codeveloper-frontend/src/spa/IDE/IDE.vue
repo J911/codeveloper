@@ -33,13 +33,13 @@
         <li class="header">
           My Files
           <span class="new-items">
-            <i class="fas fa-file" @click="openMessageBox('준비중입니다.')"></i>
-            <i class="fas fa-folder-open" @click="openMessageBox('준비중입니다.')"></i>
+            <i class="fas fa-file" @click="openMessageBox(locale.PREPARATIONS_TEXT)"></i>
+            <i class="fas fa-folder-open" @click="openMessageBox(locale.PREPARATIONS_TEXT)"></i>
           </span>
         </li>
-        <li v-for="(file, index) in this.$store.state.file.files"
+        <li v-for="(file, index) in files"
             :key="index"
-            @click="getFile(file.idx)"
+            @click="openFile(file.idx)"
             :class="currentIdx == file.idx ? 'item active': 'item'">
           <i :class="file.icon"></i> {{ file.name }}
         </li>
@@ -52,7 +52,7 @@
               :key="index" :src="contributor.user_avatar" 
               :alt="contributor.user_name" 
               :title="contributor.user_name"
-              @click="viewContributor(index)">
+              @click="showContributor(index)">
 
           <i class="fas fa-plus-square" @click="openRegistBox"></i>
         </div>
@@ -62,7 +62,7 @@
        <codemirror
               :value="code" 
               :options="ideOption"
-              @input="onCmCodeChange">
+              @input="codeChange">
       </codemirror>
     </div>
     <div class="console">
@@ -91,12 +91,12 @@ import Dimmer from '../../components/Dimmer.vue'
 import MessageBox from '../../components/MessageBox.vue'
 import RegistBox from '../../components/RegistBox.vue'
 import ProfileBox from '../../components/ProfileBox.vue'
+
 import 'codemirror/mode/javascript/javascript.js'
 import 'codemirror/theme/base16-dark.css'
+
 import methods from './methods'
 import computed from './computed'
-
-import * as lang from '../../locale'
 
 export default {
   name: 'IDE',
@@ -110,10 +110,7 @@ export default {
     this.$store.dispatch('GET_USER')
     this.$store.dispatch('GET_FILE_LIST')
     this.$store.dispatch('GET_CONTRIBUTORS')
-    // this.$store.commit('INITIALIZE_SOCKET') // GET_USER action 이후로 변경
-    this.$store.commit('UPDATE_CODE', lang.ko.IDE_INTRO_MESSAGE)
-
-    // socket.receiver(this.$store.state.socket)
+    this.$store.commit('UPDATE_CODE', this.locale.IDE_INTRO_MESSAGE)
   },
   computed,
   methods

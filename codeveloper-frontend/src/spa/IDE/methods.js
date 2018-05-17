@@ -1,8 +1,8 @@
 export default {
-    getFile(idx) {
+    openFile(idx) {
       this.$store.dispatch('GET_FILE', idx)
     },
-    onCmCodeChange(newCode) {
+    codeChange(newCode) {
       this.currentIdx !== null ? 
       this.$store.dispatch('UPDATE_FILE', {
         idx : this.currentIdx,
@@ -15,7 +15,7 @@ export default {
     openRegistBox() {
       this.$store.commit('SHOW_REGIST_BOX')
     },
-    viewContributor (idx){
+    showContributor (idx){
       this.$store.commit('UPDATE_ACTIVE_CONTRIBUTOR', idx)
       this.$store.commit('SHOW_PROFILE_BOX')
     },

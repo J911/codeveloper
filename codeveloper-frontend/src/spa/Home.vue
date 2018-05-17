@@ -3,9 +3,9 @@
     <app-nav />
     <header>
         <h1>
-            {{ ko.CODEVELOPER_SLOGAN }}
+            {{ locale.CODEVELOPER_SLOGAN }}
         </h1>
-        <p>{{ ko.CODEVELOPER_SHORT_INTRODUCE }}</p>
+        <p>{{ locale.CODEVELOPER_SHORT_INTRODUCE }}</p>
         <div class="btn-group">
             <router-link to="login"><button> <i class="fa fa-code"></i> start code</button></router-link>
             <a href="#introduce"><button class="gray">what the codeveloper</button></a>
@@ -15,12 +15,12 @@
         <section id="introduce">
             <i class="fa fa-code"></i>
             <h1>codeveloper?</h1>
-            <p>{{ ko.CODEVELOPER_INTRODUCE }}</p>
-            <p>{{ ko.CODEVELOPER_CONTENTS }}</p>
+            <p>{{ locale.CODEVELOPER_INTRODUCE }}</p>
+            <p>{{ locale.CODEVELOPER_CONTENTS }}</p>
         </section>
         <hr>
         <section id="language">
-            <h1>{{ ko. CODEVELOPER_LANGUAGES }}</h1>
+            <h1>{{ locale.CODEVELOPER_LANGUAGES }}</h1>
             <ul class="languages">
                 <li class="item" v-for="(lang, index) in languages" :key="index">
                     <span class="icon" 
@@ -30,7 +30,7 @@
                     <p>{{ lang.text }}</p>
                 </li>
             </ul>
-            <p class="sub-contents">{{ ko.CODEVELOPER_NO_LANGUAGE }}</p>
+            <p class="sub-contents">{{ locale.CODEVELOPER_NO_LANGUAGE }}</p>
         </section>
     </article>
     <footer>
@@ -70,7 +70,7 @@ export default {
     }
   },
   computed: {
-    ko() {
+    locale() {
         return lang.ko
     }
   }

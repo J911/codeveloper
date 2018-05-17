@@ -8,11 +8,14 @@
         {{ contents }}
     </p>
     <button @click="hideMessageBox">
-        확인
+        {{ locale.OKAY_TEXT }}
     </button>
   </div>
 </template>
+
 <script>
+import * as lang from '../locale'
+
 export default {
     computed: {
         messagebox() {
@@ -23,6 +26,9 @@ export default {
         },
         contents() {
             return this.$store.state.message.contents
+        },
+        locale() {
+            return lang.ko
         }
     },
     methods: {

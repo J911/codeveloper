@@ -5,15 +5,17 @@
     </h1>
     <hr>
     <p class="message">
-        Github이름을 입력해주세요
+        {{ locale.INPUT_GITHUB_NAME }}
     </p>
     <input type="text" v-model="github">
     <button @click="addContributor">
-        추가
+        {{ locale.ADD_TEXT }}
     </button>
   </div>
 </template>
 <script>
+import * as lang from '../locale'
+
 export default {
     data() {
         return {
@@ -26,6 +28,9 @@ export default {
         },
         contributors() {
             return this.$store.state.contributors
+        },
+        locale() {
+            return lang.ko
         }
     },
     methods: {

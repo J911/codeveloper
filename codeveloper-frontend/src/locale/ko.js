@@ -19,9 +19,20 @@ export const EXIST_CONTRIBUTOR = "이미 추가된 멤버입니다."
 export const DATABASE_ERROR = "데이터베이스 에러가 발생했습니다."
 export const DEFAULT_ERROR = "알수없는 에러가 발생했습니다."
 
+// common Message
+
+export const CODEVELOPER_TEXT = "코드벨로퍼"
+export const PREPARATIONS_TEXT = "준비중입니다."
+export const DONE_TEXT = "완료"
+export const OKAY_TEXT = "확인"
+export const CLOSE_TEXT = "닫기"
+export const START_TEXT = "시작하기"
+export const ADD_TEXT = "추가"
+export const INTRODUCE_DEVELOPER = "개발자 소개"
 
 // IDE
 
+export const INPUT_GITHUB_NAME = "Github이름을 입력해주세요"
 export const IDE_INTRO_MESSAGE = `# INTRO MESSAGE
 
 # 코드 벨러퍼에 오신 것을 환영합니다!

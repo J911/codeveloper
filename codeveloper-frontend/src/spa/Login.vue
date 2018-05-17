@@ -9,10 +9,10 @@
                 <i class="fab fa-github"></i>
                 Github
             </h1>
-            <p>{{ ko.LOGIN_INTRODUCE }}</p>
+            <p>{{ locale.LOGIN_INTRODUCE }}</p>
             
             <a href="/auth/github">
-                <i class="fab fa-github"></i> {{ ko.LOGIN_TEXT }}
+                <i class="fab fa-github"></i> {{ locale.LOGIN_TEXT }}
             </a>
             
         </div>
@@ -33,7 +33,7 @@ export default {
       'app-nav': Nav
   },
   computed: {
-    ko() {
+    locale() {
         return lang.ko
     }
   }
