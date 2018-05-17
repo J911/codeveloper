@@ -1,4 +1,4 @@
-export const introMessage = `
+export const ko = `
 # INTRO MESSAGE
 
 # 코드 벨러퍼에 오신 것을 환영합니다!
