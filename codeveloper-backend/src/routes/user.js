@@ -14,6 +14,17 @@ router.get('/', (req, res, next) => {
     return res.json({user: session});
 });
 
+router.get('/host', (req, res, next)=> {
+    const session = req.session.passport.user;
+    const sql = `SELECT members.* FROM members INNER JOIN contributors ON contributors.master = members.user_id WHERE contributors.contributor = '${session.user_id}'`;
+    connection.query(sql, (err, hosts) => {
+        if(err) return res.status(500).json({
+            errorCode: 9
+        });
+        return res.json({hosts: hosts});
+    })  
+});
+
 router.get('/contributor', (req, res, next)=> {
     const session = req.session.passport.user;
     const sql = `SELECT members.* FROM members INNER JOIN contributors ON contributors.contributor = members.user_id WHERE contributors.master = '${session.user_id}'`;

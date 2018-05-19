@@ -1,12 +1,17 @@
-module.exports = function (socket) {
+module.exports = function (io, socket) {
     console.log('a user connected',socket.request.session);
 
-    socket.on('join:room', function(data) {
-        socket.join('room' + data.roomIdgitgtggtg);
+    socket.on('join:IDE', function(data) {
+        console.log('IDE' + data.roomId);
+        socket.join('IDE' + data.roomId);
+    });
+
+    socket.on('change:code', function(data) {
+        io.sockets.in('IDE' + data.roomId).emit('change:code', data.message);
     });
 
     socket.on('send:message', function(data) {
-        io.sockets.in('room' + data.roomId).emit('send:message', data.message);
+        io.sockets.in('IDE' + data.roomId).emit('send:message', data.message);
     });
 
     socket.on('disconnect', function(){

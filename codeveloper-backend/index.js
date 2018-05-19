@@ -33,7 +33,7 @@ app.use('/', routes);
 app.use('/dist', express.static(path.join(__dirname, '../codeveloper-frontend/dist')));
 app.use('*', (req, res)=>res.sendFile(path.join(__dirname, '../codeveloper-frontend/index.html')));
 
-io.on('connection', socketEventHanddler);
+io.on('connection', (socket)=>socketEventHanddler(io, socket));
 http.listen(PORT);
   
   

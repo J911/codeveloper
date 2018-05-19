@@ -39,6 +39,14 @@ const actions = {
         return context.commit(mutationTypes.UPDATE_FILE, payload.code)
     },
 
+    [types.GET_HOSTS](context) {
+        axios.get(`/user/host`)
+        .then((result) => {
+            // context.commit(mutationTypes.INITIALIZE_SOCKET)
+            return context.commit(mutationTypes.UPDATE_HOSTS, result.data.hosts)
+        })
+        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_HOSTS,e.response.data.errorCode)}))
+    },
     [types.GET_CONTRIBUTORS](context) {
         axios.get(`/user/contributor`)
         .then((result) => {
@@ -46,7 +54,6 @@ const actions = {
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_CONTRIBUTORS,e.response.data.errorCode)}))
     },
-
     [types.ADD_CONTRIBUTOR]: function (context, payload) {
         axios.post(`/user/contributor`, {contributor: payload})
         .then((result) => {

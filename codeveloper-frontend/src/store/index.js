@@ -41,6 +41,7 @@ export const store = new Vuex.Store({
       }
     },
     contributors: [],
+    hosts: [],
     socket: null
   },
   mutations,

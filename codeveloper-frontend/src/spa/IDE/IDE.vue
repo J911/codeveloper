@@ -112,6 +112,7 @@ export default {
   created() {
     this.$store.dispatch('GET_USER')
     this.$store.dispatch('GET_FILE_LIST')
+    this.$store.dispatch('GET_HOSTS')
     this.$store.dispatch('GET_CONTRIBUTORS')
     this.$store.commit('UPDATE_CODE', this.locale.IDE_INTRO_MESSAGE)
   },

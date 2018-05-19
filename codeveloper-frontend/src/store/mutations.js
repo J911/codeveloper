@@ -4,7 +4,7 @@ import socketReciver from './modules/socket-reciver'
 
 const mutations = {
     [types.UPDATE_USER]: function (state, payload) {
-        mutations.INITIALIZE_SOCKET(state, payload.user_id) // 이 코드 상당히 맘에 안드네..
+        // mutations.INITIALIZE_SOCKET(state, payload.user_id) // 이 코드 상당히 맘에 안드네..
         return state.user = payload
     },
     [types.UPDATE_CURRENT_IDX]: function (state, payload) {
@@ -73,6 +73,10 @@ const mutations = {
         state.env.dimmer = false
         return state.env.profilebox.active = false
     },
+    [types.UPDATE_HOSTS]: function(state, payload) {
+        state.hosts = payload
+        return mutations.INITIALIZE_SOCKET(state, payload.user_id) // 이 코드 상당히 맘에 안드네..
+    },
     [types.UPDATE_CONTRIBUTORS]: function (state, payload){
         return state.contributors = payload
     },
@@ -82,11 +86,14 @@ const mutations = {
     [types.SWITCH_CONSOLE_MENU]: function (state, payload){
         return state.env.consoleMenu = payload
     },
-    [types.INITIALIZE_SOCKET]: function (state, payload){
+    [types.INITIALIZE_SOCKET]: function (state){
         state.socket = io()
         // state.socket.emit('message', 'hello, world')
         socketReciver(state, state.socket)
-        return state.socket.emit('join:IDE', {roomId: payload})        
+        state.hosts.forEach(host => {
+            state.socket.emit('join:IDE', {roomId: host.user_id})
+        });
+        return state.socket.emit('join:IDE', {roomId: state.user.user_id})        
     },
     [types.SEND_MESSAGE]: function (state, payload) {
         return state.socket.emit('send:message', {message: payload})
