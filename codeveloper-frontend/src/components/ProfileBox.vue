@@ -21,7 +21,7 @@ export default {
             return this.$store.state.env.profilebox.active
         },
         contributor() {
-            return this.$store.state.contributors[this.$store.state.profilebox.contributor]
+            return this.$store.state.contributors[this.$store.state.env.profilebox.contributor]
         },
         locale() {
             return lang.ko

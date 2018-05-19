@@ -34,6 +34,7 @@ const actions = {
     },
 
     [types.UPDATE_FILE]: function (context, payload) {
+        payload.socket.emit('change:code', {code: payload.code}) 
         axios.post(`/file/${payload.idx}`, {code: payload.code})
         return context.commit(mutationTypes.UPDATE_FILE, payload.code)
     },

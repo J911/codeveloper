@@ -16,9 +16,9 @@ const mutations = {
     [types.UPDATE_FILE_LIST]: function (state, payload){
         return state.file.files = payload
     },
-    [types.UPDATE_ACTIVE_CONTRIBUTOR]: function (state, payload){
-        return state.env.profilebox.contributor = payload
-    },
+    // [types.UPDATE_ACTIVE_CONTRIBUTOR]: function (state, payload){
+    //     return state.env.profilebox.contributor = payload
+    // },
     [types.UPDATE_CODE]: function (state, payload){
         return state.ide.code = payload
     },
@@ -62,10 +62,11 @@ const mutations = {
         state.env.dimmer = false
         return state.env.registbox = false
     },
-    [types.SHOW_PROFILE_BOX]: function (state){
+    [types.SHOW_PROFILE_BOX]: function (state, payload){
         state.env.dimmer = true
         state.env.messagebox = false
         state.env.registbox = false
+        state.env.profilebox.contributor = payload
         return state.env.profilebox.active = true  
     },
     [types.HIDE_PROFILE_BOX]: function (state){
@@ -73,19 +74,19 @@ const mutations = {
         return state.env.profilebox.active = false
     },
     [types.UPDATE_CONTRIBUTORS]: function (state, payload){
-        return state.env.contributors = payload
+        return state.contributors = payload
     },
     [types.ADD_CONTRIBUTOR]: function (state, payload){
-        return state.env.contributors.push(payload)
+        return state.contributors.push(payload)
     },
     [types.SWITCH_CONSOLE_MENU]: function (state, payload){
         return state.env.consoleMenu = payload
     },
     [types.INITIALIZE_SOCKET]: function (state, payload){
         state.socket = io()
-        state.socket.emit('message', 'hello, world')
-        socketReciver(state.socket)
-        return state.socket.emit('join:room', {roomId: payload})        
+        // state.socket.emit('message', 'hello, world')
+        socketReciver(state, state.socket)
+        return state.socket.emit('join:IDE', {roomId: payload})        
     },
     [types.SEND_MESSAGE]: function (state, payload) {
         return state.socket.emit('send:message', {message: payload})
