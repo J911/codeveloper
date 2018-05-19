@@ -1,5 +1,5 @@
 <template>
-  <div v-if="messagebox" class="messageBox">
+  <div v-if="show" class="messageBox">
     <h1 class="header">
         {{ title }}
     </h1>
@@ -18,14 +18,14 @@ import * as lang from '../locale'
 
 export default {
     computed: {
-        messagebox() {
-            return this.$store.state.env.messagebox
+        show() {
+            return this.$store.state.messageBox.show
         },
         title() {
-            return this.$store.state.message.title
+            return this.$store.state.messageBox.title
         },
         contents() {
-            return this.$store.state.message.contents
+            return this.$store.state.messageBox.contents
         },
         locale() {
             return lang.ko

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="profilebox" class="profileBox">
+  <div v-if="show" class="profileBox">
     <img :src="contributor.user_avatar" :alt="contributor.user_name" class="profileImage">
     <p class="profile">
         {{ contributor.user_name }}
@@ -17,11 +17,12 @@ export default {
         'contributorIdx'
     ],
     computed: {
-        profilebox() {
-            return this.$store.state.env.profilebox.active
+        show() {
+            return this.$store.state.profileBox.show
         },
         contributor() {
-            return this.$store.state.contributors[this.$store.state.env.profilebox.contributor]
+            const contributorIdx = this.$store.state.profileBox.contributorIdx
+            return this.$store.state.contributors[contributorIdx]
         },
         locale() {
             return lang.ko

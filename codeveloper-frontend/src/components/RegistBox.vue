@@ -1,5 +1,5 @@
 <template>
-  <div v-if="registbox" class="registBox">
+  <div v-if="show" class="registBox">
     <h1 class="header">
         Add Contributors
     </h1>
@@ -23,8 +23,8 @@ export default {
         }
     },
     computed: {
-        registbox() {
-            return this.$store.state.env.registbox
+        show() {
+            return this.$store.state.registBox.show
         },
         contributors() {
             return this.$store.state.contributors

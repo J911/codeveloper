@@ -17,7 +17,7 @@ const actions = {
         axios.get(`/file`)
         .then((result) => {
             this.code = result.data.code
-            return context.commit(mutationTypes.UPDATE_FILE_LIST, result.data.files)
+            context.commit(mutationTypes.UPDATE_FILE_LIST, result.data.files)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_FILE_LIST,e.response.data.errorCode)}))
 
@@ -27,15 +27,14 @@ const actions = {
         axios.get(`/file/${payload}`)
         .then((result) => {
           context.commit(mutationTypes.UPDATE_CURRENT_IDX, payload)
-          return context.commit(mutationTypes.UPDATE_FILE, result.data.code)
+          context.commit(mutationTypes.UPDATE_FILE, result.data.code)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_FILE,e.response.data.errorCode)}))
     },
 
     [types.UPDATE_FILE]: function (context, payload) {
-        payload.socket.emit('change:code', {code: payload.code}) 
         axios.post(`/file/${payload.idx}`, {code: payload.code})
-        return context.commit(mutationTypes.UPDATE_FILE, payload.code)
+        context.commit(mutationTypes.UPDATE_FILE, payload.code)
     },
 
     [types.GET_HOSTS](context) {
@@ -43,18 +42,18 @@ const actions = {
         .then((result) => result.data.hosts)
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_HOSTS,e.response.data.errorCode)}))
     },
+
     [types.GET_CONTRIBUTORS](context) {
         axios.get(`/user/contributor`)
-        .then((result) => {
-          return context.commit(mutationTypes.UPDATE_CONTRIBUTORS, result.data.contributors)
-        })
+        .then((result) => context.commit(mutationTypes.UPDATE_CONTRIBUTORS, result.data.contributors))
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_CONTRIBUTORS,e.response.data.errorCode)}))
     },
+    
     [types.ADD_CONTRIBUTOR]: function (context, payload) {
         axios.post(`/user/contributor`, {contributor: payload})
         .then((result) => {
             context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: "Success!"})
-            return context.commit(mutationTypes.ADD_CONTRIBUTOR, result.data.contributor)
+            context.commit(mutationTypes.ADD_CONTRIBUTOR, result.data.contributor)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.ADD_CONTRIBUTOR,e.response.data.errorCode)}))
     }

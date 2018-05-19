@@ -5,7 +5,7 @@ export default {
       return this.$store.state.user
     },
     currentIdx() {
-      return this.$store.state.file.currentIdx
+      return this.$store.state.ide.file.currentIdx
     },
     code() {
       return this.$store.state.ide.code
@@ -20,7 +20,7 @@ export default {
       return this.$store.state.ide.options
     },
     files () {
-      return this.$store.state.file.files
+      return this.$store.state.ide.file.files
     },
     locale () {
       return lang.ko
