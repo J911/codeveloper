@@ -6,14 +6,13 @@ import errMessage from './modules/err-message'
 
 const actions = {
     [types.GET_USER]: function (context) {
-        axios.get(`/user`)
+        return axios.get(`/user`)
         .then((result) => {
             setTimeout(()=>context.commit(mutationTypes.HIDE_LOADING), 1000)
-            return context.commit(mutationTypes.UPDATE_USER,result.data.user)
+            context.commit(mutationTypes.UPDATE_USER,result.data.user)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_USER,e.response.data.errorCode)}))
     },
-
     [types.GET_FILE_LIST]: function (context, payload) {
         axios.get(`/file`)
         .then((result) => {
@@ -40,11 +39,8 @@ const actions = {
     },
 
     [types.GET_HOSTS](context) {
-        axios.get(`/user/host`)
-        .then((result) => {
-            // context.commit(mutationTypes.INITIALIZE_SOCKET)
-            return context.commit(mutationTypes.UPDATE_HOSTS, result.data.hosts)
-        })
+        return axios.get(`/user/host`)
+        .then((result) => result.data.hosts)
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_HOSTS,e.response.data.errorCode)}))
     },
     [types.GET_CONTRIBUTORS](context) {

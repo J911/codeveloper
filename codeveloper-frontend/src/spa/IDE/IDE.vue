@@ -100,6 +100,8 @@ import 'codemirror/theme/base16-dark.css'
 import methods from './methods'
 import computed from './computed'
 
+import socket from '../../socket'
+
 export default {
   name: 'IDE',
   components: {
@@ -111,8 +113,10 @@ export default {
   },
   created() {
     this.$store.dispatch('GET_USER')
+    .then(()=>socket.action.join(socket, this.$store.state.user.user_id))
     this.$store.dispatch('GET_FILE_LIST')
     this.$store.dispatch('GET_HOSTS')
+    .then(hosts => hosts.forEach(host => socket.action.join(socket, host.user_id)))
     this.$store.dispatch('GET_CONTRIBUTORS')
     this.$store.commit('UPDATE_CODE', this.locale.IDE_INTRO_MESSAGE)
   },

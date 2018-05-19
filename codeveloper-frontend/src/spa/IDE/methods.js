@@ -17,7 +17,6 @@ export default {
       this.$store.commit('SHOW_REGIST_BOX')
     },
     showContributor (idx){
-      // this.$store.commit('UPDATE_ACTIVE_CONTRIBUTOR', idx)
       this.$store.commit('SHOW_PROFILE_BOX', idx)
     },
     switchConsoleMenu (menu) {
