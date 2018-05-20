@@ -1,24 +1,19 @@
-module.exports = function (io, socket) {
-    console.log('a user connected',socket.request.session);
+const types = require('./socket-types')
 
-    socket.on('join:IDE', function(data) {
+module.exports = function (io, socket) {
+    socket.on(types.JOIN_IDE, function(data) {
         socket.join('IDE' + data.joinId);
     });
 
-    socket.on('update:code', function(data) {
+    socket.on(types.UPDATE_CODE, function(data) {
         io.sockets.in('IDE' + data.roomId).emit('update:code', data.message);
     });
 
-    socket.on('send:message', function(data) {
+    socket.on(types.CHAT_MESSAGE, function(data) {
         io.sockets.in('IDE' + data.roomId).emit('send:message', data.message);
     });
 
-    socket.on('disconnect', function(){
+    socket.on(types.DISCONNECT, function(){
         console.log('user disconnected');
-    });
-
-    //sample_code
-    socket.on('message', function(data) {
-        console.log(data);
     });
 }

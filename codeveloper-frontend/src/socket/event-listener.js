@@ -1,8 +1,10 @@
+import * as types from './socket-types'
+
 export default (socket) => {
-    socket.on('update:code', data => {
+    socket.on(types.UPDATE_CODE, data => {
 
     })
-    socket.on('send:message', msg => {
+    socket.on(types.CHAT_MESSAGE, msg => {
     
     })
 }
