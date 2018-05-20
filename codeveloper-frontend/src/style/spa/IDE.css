@@ -77,6 +77,16 @@ nav span {
 .explorer ul.files li.item.active {
     background-color: rgb(70, 70, 70);
 }
+.explorer ul.files li.item .new-file {
+    background-color: #5c5c5cbb;
+    color: white;
+    border: 1px solid rgba(15, 15, 136, 0.473);
+    font-weight: 600;
+    padding: 5px;
+}
+.explorer ul.files li.item .new-file:focus {
+    outline: none;
+}
 .explorer .new-items {
     float: right;
 }

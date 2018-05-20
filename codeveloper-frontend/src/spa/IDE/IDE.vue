@@ -34,9 +34,12 @@
         <li class="header">
           My Files
           <span class="new-items">
-            <i class="fas fa-file" @click="openMessageBox(locale.PREPARATIONS_TEXT)"></i>
+            <i class="fas fa-file" @click="newFileActive = true"></i>
             <i class="fas fa-folder-open" @click="openMessageBox(locale.PREPARATIONS_TEXT)"></i>
           </span>
+        </li>
+        <li v-if="newFileActive" class="item active">
+          <i class="fab fa-js"></i> <input class="new-file" type="text" v-model="newFileName" @change="newFile()">
         </li>
         <li v-for="(file, index) in files"
             :key="index"
@@ -110,6 +113,12 @@ export default {
     'app-messgebox': MessageBox,
     'app-registbox': RegistBox,
     'app-profilebox': ProfileBox,
+  },
+  data () {
+    return {
+      newFileActive: false,
+      newFileName: "",
+    }
   },
   created() {
     this.$store.dispatch('GET_USER')
