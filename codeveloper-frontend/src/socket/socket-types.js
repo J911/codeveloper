@@ -1,3 +1,7 @@
 export const JOIN_IDE = "JOIN:IDE"
 export const UPDATE_CODE = "UPDATE:CODE"
 export const CHAT_MESSAGE = "CHAT:MESSAGE"
+
+export const CONTAINER_INIT = "CONTAINER:INIT"
+export const CONTAINER_CP = "CONTAINER:CP"
+export const CONTAINER_COMMAND = "CONTAINER:COMMAND"
