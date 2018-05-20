@@ -21,7 +21,19 @@ router.get('/', (req, res) => {
         return res.json({files: files});
     });
 });
+router.post('/', (req, res) => { //newfile
+    const session = req.session.passport.user;
+    const filename = req.body.filename;
+    const icon = 'fab fa-js';
 
+    const sql = `INSERT INTO files(uid, name, icon) VALUES('${session.user_id}', '${filename}', '${icon}')`;
+    connection.query(sql, (err) => {
+        if(err) return res.status(500).json({
+            errorCode: 9
+        });
+        return res.json({result: "success"});
+    });
+});
 router.get('/contribute', (req, res) => {
     // 본인이 기여자로 등록된 마스터의 파일을 가져오는 API
     const session = req.session.passport.user;
@@ -50,7 +62,11 @@ router.get('/:idx', (req, res) => {
             errorCode: 9
         });
         fs.readFile(path.resolve(__dirname, `../../uploads/${session.user_id}_${idx}`), 'utf8', function(err, data){
-            return res.json({code: data});
+            if(err && err.errno == -2)
+                fs.writeFileSync(path.resolve(__dirname, `../../uploads/${session.user_id}_${idx}`), '', function(err) {
+                    return res.json({result: "success"});
+                });
+            return res.json({code: data || ''});
         });
     });
 });
