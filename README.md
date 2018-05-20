@@ -31,8 +31,8 @@ Codeveloper - 당신의 팀과 co-develop하세요!
 - Vuex
 
 ## 소개 Slide
-[개발 계획](https://www.slideshare.net/ssuser827c0b/codeveloper)
-[개발기](https://www.slideshare.net/ssuser827c0b/codeveloper-97742943)
+- [개발 계획](https://www.slideshare.net/ssuser827c0b/codeveloper)
+- [개발기](https://www.slideshare.net/ssuser827c0b/codeveloper-97742943)
 
 ## 라이센스
 GNU General Public License v3.0
