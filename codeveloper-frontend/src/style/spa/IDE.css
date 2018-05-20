@@ -83,6 +83,7 @@ nav span {
     border: 1px solid rgba(15, 15, 136, 0.473);
     font-weight: 600;
     padding: 5px;
+    width: 70%;
 }
 .explorer ul.files li.item .new-file:focus {
     outline: none;
