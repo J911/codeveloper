@@ -156,6 +156,8 @@ nav span {
     padding: 5px 0;
     margin: 0;
     font-size: 15px;
+    overflow: scroll;
+    height: 15vh;
 }
 
 .console .body .terminal input{
