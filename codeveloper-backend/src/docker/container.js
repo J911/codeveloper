@@ -13,8 +13,8 @@ exports.cp = data => {
 
     for(let i=0;i<filenames.length;i++) {
         // fs.writeFileSync(`uploads/${filenames[i]}_${uid}`, codes[i]||'');
-        console.log(`docker cp uploads/${uid}_${i+1} ${uid}:/workdir/${filenames[i].name}`)
-        child_process.execSync(`docker cp uploads/${uid}_${i+1} ${uid}:/workdir/${filenames[i].name}`);
+        console.log(`docker cp uploads/${uid}_${filenames[i].idx} ${uid}:/workdir/${filenames[i].name}`)
+        child_process.execSync(`docker cp uploads/${uid}_${filenames[i].idx} ${uid}:/workdir/${filenames[i].name}`);
         child_process.exec(`rm uploads/${filenames[i]}_${uid}`);
     }
     console.log("CP OK")
