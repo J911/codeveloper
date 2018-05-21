@@ -47,6 +47,14 @@
             :class="currentIdx == file.idx ? 'item active': 'item'">
           <i :class="file.icon"></i> {{ file.name }}
         </li>
+        <span v-for="(cfiles, index) in contributorFiles" :key="index">
+          <li v-for="(file, index) in cfiles.files"
+              :key="index"
+              @click="openMasterFile(cfiles.master, file.idx)"
+              :class="currentIdx == file.idx ? 'item active': 'item'">
+            <i class="fas fa-link"></i> {{ file.name }}
+          </li>
+        </span>
       </ul>
       <div class="footer">
         <span class="header">contributors</span>
@@ -136,7 +144,11 @@ export default {
     .then(()=>socket.action.initContainer(socket, this.user.user_id))
     this.$store.dispatch('GET_FILE_LIST')
     this.$store.dispatch('GET_HOSTS')
-    .then(hosts => hosts.forEach(host => socket.action.join(socket, host.user_id)))
+    .then(hosts => hosts.forEach(host => {
+        socket.action.join(socket, host.user_id)
+        this.$store.dispatch('GET_MASTER_FILE_LIST', host.user_id)
+      })
+    )
     this.$store.dispatch('GET_CONTRIBUTORS')
     this.$store.commit('UPDATE_CODE', this.locale.IDE_INTRO_MESSAGE)
   },

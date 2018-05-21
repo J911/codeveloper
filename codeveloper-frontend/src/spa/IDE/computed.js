@@ -7,6 +7,12 @@ export default {
     currentIdx() {
       return this.$store.state.ide.file.currentIdx
     },
+    currentMaster() {
+      return this.$store.state.ide.file.currentMaster
+    },
+    codeState() {
+      return this.$store.state.ide.codeState
+    },
     code() {
       return this.$store.state.ide.code
     },
@@ -21,6 +27,9 @@ export default {
     },
     files () {
       return this.$store.state.ide.file.files
+    },
+    contributorFiles () {
+      return this.$store.state.ide.file.contributorFiles
     },
     terminalLogs () {
       return this.$store.state.ide.terminalLogs

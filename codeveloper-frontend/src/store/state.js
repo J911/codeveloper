@@ -23,6 +23,7 @@ export default {
       ide: {
         terminalLogs: [],
         code: '',
+        codeState: 'basic',
         options: {
           tabSize: 4,
           mode: 'text/javascript',
@@ -32,7 +33,9 @@ export default {
         },
         file: {
           files: [],
-          currentIdx: null
+          contributorFiles: [],
+          currentIdx: null,
+          currentMaster: null
         },
       },
       contributors: [],

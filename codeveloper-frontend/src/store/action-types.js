@@ -1,8 +1,10 @@
 
 export const GET_USER = 'GET_USER'
 export const GET_FILE = 'GET_FILE'
+export const GET_MASTER_FILE = 'GET_MASTER_FILE'
 export const NEW_FILE = 'NEW_FILE'
 export const GET_FILE_LIST = 'GET_FILE_LIST'
+export const GET_MASTER_FILE_LIST = 'GET_MASTER_FILE_LIST'
 export const UPDATE_FILE = 'UPDATE_FILE'
 export const GET_HOSTS = 'GET_HOSTS'
 export const GET_CONTRIBUTORS = 'GET_CONTRIBUTORS'

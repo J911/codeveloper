@@ -4,14 +4,20 @@ export default {
     openFile(idx) {
       this.$store.dispatch('GET_FILE', idx)
     },
+    openMasterFile(master, idx) {
+      this.$store.dispatch('GET_MASTER_FILE', {master, idx})
+    },
     codeChange(newCode) {
-      if(this.currentIdx){
-        this.$store.dispatch('UPDATE_FILE', {
-          idx : this.currentIdx,
-          code : newCode,
-        }) 
-      }
-      socket.action.updateCode(socket, newCode)
+      if(this.currentIdx || this.codeState == 'basic'){
+          this.$store.dispatch('UPDATE_FILE', {
+            idx : this.currentIdx,
+            code : newCode,
+          }) 
+          socket.action.updateCode(socket, {
+            idx: this.currentIdx, master : this.currentMaster || this.user.user_id, 
+            newCode
+          })
+      }else this.$store.commit('UPDATE_CODE_STATE', 'basic')
     },
     newFile() {
       this.$store.dispatch('NEW_FILE', this.newFileName)

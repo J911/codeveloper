@@ -21,6 +21,16 @@ router.get('/', (req, res) => {
         return res.json({files: files});
     });
 });
+router.get('/master', (req, res) => {
+    const master = req.query.master;
+    const sql = `SELECT * FROM files WHERE uid = '${master}'`;
+    connection.query(sql, (err, files) => {
+        if(err) return res.status(500).json({
+            errorCode: 9
+        });
+        return res.json({master, files});
+    });
+});
 router.post('/', (req, res) => { //newfile
     const session = req.session.passport.user;
     const filename = req.body.filename;
@@ -70,6 +80,24 @@ router.get('/:idx', (req, res) => {
         });
     });
 });
+router.get('/master/:idx', (req, res) => {
+    const idx = req.params.idx;
+    const master = req.query.master;
+    const sql = `SELECT * FROM files WHERE uid = ${master}`;
+    connection.query(sql, (err, files) => {
+        if(err) return res.status(500).json({
+            errorCode: 9
+        });
+        console.log(`../../uploads/${master}_${idx}`)
+        fs.readFile(path.resolve(__dirname, `../../uploads/${master}_${idx}`), 'utf8', function(err, data){
+            if(err && err.errno == -2)
+                fs.writeFileSync(path.resolve(__dirname, `../../uploads/${master}_${idx}`), '', function(err) {
+                    return res.json({result: "success"});
+                });
+            return res.json({code: data || ''});
+        });
+    });
+});
 router.post('/:idx', (req, res) => {
     const idx = req.params.idx;
     const code = req.body.code;
@@ -80,6 +108,20 @@ router.post('/:idx', (req, res) => {
             errorCode: 9
         });
         fs.writeFile(path.resolve(__dirname, `../../uploads/${session.user_id}_${idx}`), code, function(err) {
+            return res.json({result: "success"});
+        });
+    });
+});
+router.post('/master/:idx', (req, res) => {
+    const idx = req.params.idx;
+    const master = req.body.master;
+    const code = req.body.code;
+    const sql = `SELECT * FROM files WHERE uid = ${master}`;
+    connection.query(sql, (err, files) => {
+        if(err) return res.status(500).json({
+            errorCode: 9
+        });
+        fs.writeFile(path.resolve(__dirname, `../../uploads/${master}_${idx}`), code, function(err) {
             return res.json({result: "success"});
         });
     });

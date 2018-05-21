@@ -7,7 +7,7 @@ module.exports = function (io, socket) {
     });
 
     socket.on(types.UPDATE_CODE, function(data) {
-        io.sockets.in('IDE' + data.roomId).emit('update:code', data.message);
+        io.sockets.in('IDE' + data.master).emit(types.UPDATE_CODE, {idx: data.idx, code: data.code});
     });
 
     socket.on(types.CHAT_MESSAGE, function(data) {
@@ -15,7 +15,7 @@ module.exports = function (io, socket) {
     });
 
     socket.on(types.DISCONNECT, function(){
-        console.log('user disconnected');
+        // console.log('user disconnected');
     });
 
     socket.on(types.CONTAINER_INIT, ct.init);

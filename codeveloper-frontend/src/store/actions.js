@@ -16,22 +16,37 @@ const actions = {
     [types.GET_FILE_LIST]: function (context, payload) {
         axios.get(`/file`)
         .then((result) => {
-            this.code = result.data.code
+            // this.code = result.data.code
             context.commit(mutationTypes.UPDATE_FILE_LIST, result.data.files)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_FILE_LIST,e.response.data.errorCode)}))
 
     },
+    [types.GET_MASTER_FILE_LIST]: function (context, payload) {
+        axios.get(`/file/master`,  { params: { master: payload }})
+        .then((result) => {
+            // this.code = result.data.code
+            context.commit(mutationTypes.UPDATE_MASTER_FILE_LIST, result.data)
+        })
+        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_FILE_LIST,e.response.data.errorCode)}))
 
+    },
     [types.GET_FILE]: function (context, payload) {
         axios.get(`/file/${payload}`)
         .then((result) => {
-          context.commit(mutationTypes.UPDATE_CURRENT_IDX, payload)
+          context.commit(mutationTypes.UPDATE_CURRENT_IDX, {idx: payload})
           context.commit(mutationTypes.UPDATE_FILE, result.data.code)
         })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_FILE,e.response.data.errorCode)}))
     },
-
+    [types.GET_MASTER_FILE]: function (context, payload) {
+        axios.get(`/file/master/${payload.idx}`, {params: {master:payload.master}})
+        .then((result) => {
+          context.commit(mutationTypes.UPDATE_CURRENT_IDX, {idx: payload.idx, master:payload.master})
+          context.commit(mutationTypes.UPDATE_FILE, result.data.code)
+        })
+        .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_FILE,e.response.data.errorCode)}))
+    },
     [types.NEW_FILE]: function (context, payload) {
         return axios.post(`/file`, {filename: payload})
         .then((result) => {
@@ -41,7 +56,10 @@ const actions = {
     },
 
     [types.UPDATE_FILE]: function (context, payload) {
-        axios.post(`/file/${payload.idx}`, {code: payload.code})
+        if(context.state.ide.file.currentMaster)
+            axios.post(`/file/master/${payload.idx}`, {master:context.state.ide.file.currentMaster, code: payload.code})
+        else
+            axios.post(`/file/${payload.idx}`, {code: payload.code})
         context.commit(mutationTypes.UPDATE_FILE, payload.code)
     },
 

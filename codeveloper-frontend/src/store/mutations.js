@@ -4,14 +4,22 @@ const mutations = {
     [types.UPDATE_USER]: function (state, payload) {
         state.user = payload
     },
+    [types.UPDATE_CODE_STATE]: function (state, payload) {
+        state.ide.codeState = payload
+    },
     [types.UPDATE_CURRENT_IDX]: function (state, payload) {
-        state.ide.file.currentIdx = payload
+        if(payload.master) state.ide.file.currentMaster = payload.master
+        else state.ide.file.currentMaster = null
+        state.ide.file.currentIdx = payload.idx
     },
     [types.UPDATE_FILE]: function (state, payload) {
         state.ide.code = payload
     },
     [types.UPDATE_FILE_LIST]: function (state, payload){
         state.ide.file.files = payload
+    },
+    [types.UPDATE_MASTER_FILE_LIST]: function (state, payload){
+        state.ide.file.contributorFiles.push(payload)
     },
     [types.UPDATE_CODE]: function (state, payload){
         state.ide.code = payload
