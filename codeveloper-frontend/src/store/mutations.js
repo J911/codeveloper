@@ -77,6 +77,9 @@ const mutations = {
     [types.SWITCH_CONSOLE_MENU]: function (state, payload){
         state.env.consoleMenu = payload
     },
+    [types.UPDATE_CONSOLE_LOG]: function (state, payload){
+        state.ide.terminalLogs.push(payload) 
+    },
 }
 
 export default mutations

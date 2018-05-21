@@ -21,6 +21,7 @@ export default {
         consoleMenu: 'terminal',
       },
       ide: {
+        terminalLogs: [],
         code: '',
         options: {
           tabSize: 4,

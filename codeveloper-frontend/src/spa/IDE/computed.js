@@ -22,6 +22,9 @@ export default {
     files () {
       return this.$store.state.ide.file.files
     },
+    terminalLogs () {
+      return this.$store.state.ide.terminalLogs
+    },
     locale () {
       return lang.ko
     }

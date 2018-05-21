@@ -150,10 +150,28 @@ nav span {
     color: rgb(171, 171, 171);
     padding: 20px;
 }
-.console .body .chat{
+.console .body .chat,
+.console .body .terminal {
     list-style: none;
     padding: 5px 0;
     margin: 0;
+    font-size: 15px;
+}
+
+.console .body .terminal input{
+    background-color: #151515;
+    width: 70%;
+    border: none;
+    padding: 0 5px;
+    color: rgb(171, 171, 171);
+    font-size: 15px;
+}
+.console .body .terminal pre {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.console .body .terminal input:focus {
+    outline: none;
 }
 .console .header ul.menu li.item{
     display: inline-block;

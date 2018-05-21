@@ -30,5 +30,11 @@ export default {
     },
     switchConsoleMenu (menu) {
       this.$store.commit('SWITCH_CONSOLE_MENU', menu)
+    },
+    runCmd() {
+      socket.action.cpContainer(socket, this.user.user_id, this.files)
+      this.$store.commit('UPDATE_CONSOLE_LOG', this.user.user_name + '@codeveloper $ ' + this.command)
+      socket.action.cmdContainer(socket, this.user.user_id, this.command)
+      this.command = ''
     }
   }

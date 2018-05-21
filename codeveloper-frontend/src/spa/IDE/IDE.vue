@@ -79,8 +79,17 @@
         </ul>
       </div>
       <div class="body">
-          <ul class="chat">
-            <!-- <li>
+          <ul v-if="consoleMenu == 'terminal'" class="terminal">
+            <li v-for="(log, idx) in terminalLogs" :key="idx" >
+              <pre>{{ log }}</pre>
+            </li>
+            <li>
+              <pre>{{ user.user_name }}@codeveloper $ <input v-model="command" @change="runCmd()" type="text"></pre>
+            </li>
+          </ul>
+          <!--
+          <ul v-if="consoleMenu == 'chat'" class="chat">
+            <li>
               jaemin: test
             </li>
           </ul>
@@ -118,11 +127,13 @@ export default {
     return {
       newFileActive: false,
       newFileName: "",
+      command: ''
     }
   },
   created() {
     this.$store.dispatch('GET_USER')
-    .then(()=>socket.action.join(socket, this.$store.state.user.user_id))
+    .then(()=>socket.action.join(socket, this.user.user_id))
+    .then(()=>socket.action.initContainer(socket, this.user.user_id))
     this.$store.dispatch('GET_FILE_LIST')
     this.$store.dispatch('GET_HOSTS')
     .then(hosts => hosts.forEach(host => socket.action.join(socket, host.user_id)))

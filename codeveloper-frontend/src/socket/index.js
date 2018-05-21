@@ -7,5 +7,4 @@ eventListener(socket)
 
 socket.action = action
 
-export default socket;
-
+export default socket
