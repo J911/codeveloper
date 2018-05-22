@@ -88,7 +88,6 @@ router.get('/master/:idx', (req, res) => {
         if(err) return res.status(500).json({
             errorCode: 9
         });
-        console.log(`../../uploads/${master}_${idx}`)
         fs.readFile(path.resolve(__dirname, `../../uploads/${master}_${idx}`), 'utf8', function(err, data){
             if(err && err.errno == -2)
                 fs.writeFileSync(path.resolve(__dirname, `../../uploads/${master}_${idx}`), '', function(err) {

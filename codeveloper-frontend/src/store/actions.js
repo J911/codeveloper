@@ -49,9 +49,6 @@ const actions = {
     },
     [types.NEW_FILE]: function (context, payload) {
         return axios.post(`/file`, {filename: payload})
-        .then((result) => {
-            console.log(result)
-        })
         .catch((e) => context.commit(mutationTypes.SHOW_MESSAGE_BOX, {contents: errMessage(types.GET_FILE,e.response.data.errorCode)}))
     },
 

@@ -15,7 +15,6 @@ module.exports = function (io, socket) {
     });
 
     socket.on(types.DISCONNECT, function(){
-        // console.log('user disconnected');
     });
 
     socket.on(types.CONTAINER_INIT, ct.init);
