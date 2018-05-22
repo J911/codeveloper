@@ -23,7 +23,7 @@ Codeveloper - 당신의 팀과 co-develop하세요!
 1. $ mysql -u root -p 
 2. mariaDB [(none)]  > create database codeveloper;
 3. mariaDB [(none)]  > use codeveloper
-4. mariaDB [(none)]  > source "codeveloper.sql";
+4. mariaDB [codeveloper]  > source "codeveloper.sql";
 
 ### setting backend
 1. $ cd codeveloper-backend
