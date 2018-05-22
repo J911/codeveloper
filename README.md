@@ -14,11 +14,10 @@ Codeveloper - 당신의 팀과 co-develop하세요!
 ## build
 
 ### npm install
-- $ cd codeveloper-frontend
-- $ npm install
-
-- $ cd ../codeveloper-backend
-- $ npm install
+1. $ cd codeveloper-frontend
+2. $ npm install
+3. $ cd ../codeveloper-backend
+4. $ npm install
 
 ### setting database
 1. $ mysql -u root -p 
