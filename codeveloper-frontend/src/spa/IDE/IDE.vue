@@ -95,13 +95,13 @@
               <pre>{{ user.user_name }}@codeveloper $ <input v-model="command" @change="runCmd()" type="text"></pre>
             </li>
           </ul>
-          <!--
           <ul v-if="consoleMenu == 'chat'" class="chat">
             <li>
-              jaemin: test
+              <pre>
+                 {{ locale.PREPARATIONS_TEXT }}
+              </pre>
             </li>
           </ul>
-          <input type="text" class="chatInput"> -->
       </div>
     </div>
   </div>
