@@ -88,7 +88,7 @@
       </div>
       <div class="body">
           <ul v-if="consoleMenu == 'terminal'" class="terminal">
-            <li v-for="(log, idx) in terminalLogs" :key="idx" >
+            <li v-for="(log, idx) in terminalLogs" :key="idx">
               <pre>{{ log }}</pre>
             </li>
             <li>
@@ -153,7 +153,10 @@ export default {
     this.$store.commit('UPDATE_CODE', this.locale.IDE_INTRO_MESSAGE)
   },
   computed,
-  methods
+  methods,
+  updated() {
+    this.scrollToEnd()
+  },
 }
 </script>
 

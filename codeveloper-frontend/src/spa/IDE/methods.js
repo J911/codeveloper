@@ -42,5 +42,10 @@ export default {
       this.$store.commit('UPDATE_CONSOLE_LOG', this.user.user_name + '@codeveloper $ ' + this.command)
       socket.action.cmdContainer(socket, this.user.user_id, this.command)
       this.command = ''
+    },
+    scrollToEnd() {
+      const container = document.querySelector('.terminal')
+      const scrollHeight = container.scrollHeight
+      container.scrollTop = scrollHeight
     }
   }
