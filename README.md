@@ -11,6 +11,35 @@ Codeveloper - 당신의 팀과 co-develop하세요!
 ## 오픈소스 프로젝트
 모든 코드를 레파지토리에 공유합니다. 라이센스에 기반하여 마음껏 가져다 쓰셔도 됩니다.
 ~~*(이 코드들도 다 오픈소스로 만들어서)*~~
+## build
+
+### npm install
+- $ cd codeveloper-frontend
+- $ npm install
+
+- $ cd ../codeveloper-backend
+- $ npm install
+
+### setting database
+1. $ mysql -u root -p 
+2. mariaDB [(none)]  > create database codeveloper;
+3. mariaDB [(none)]  > use codeveloper
+4. mariaDB [(none)]  > source "codeveloper.sql";
+
+### setting backend
+1. $ cd codeveloper-backend
+2. $ cp .env_sample .env
+3. $ vi .env // env 수정
+4. $ mkdir uploads // init folder
+
+### build frontend
+1. $ cd codeveloper-frontend
+2. $ npm run build
+
+### run codeveloper
+1. $ cd codeveloper-backend
+2. $ node index.js
+3. enjoy codeveloper 🙌
 
 ## Stack
 
