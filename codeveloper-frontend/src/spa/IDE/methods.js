@@ -8,7 +8,7 @@ export default {
       this.$store.dispatch('GET_MASTER_FILE', {master, idx})
     },
     codeChange(code) {
-      if(this.currentIdx || this.codeState == 'basic'){
+      if(this.currentIdx && this.codeState == 'basic'){
           this.$store.dispatch('UPDATE_FILE', {
             idx : this.currentIdx,
             code,
