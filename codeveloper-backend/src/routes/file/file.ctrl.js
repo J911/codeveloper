@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const connection = require('../../mysql');
 
+const baseDir = '../../../';
+
 exports.getFile = (req, res) => {
     const session = req.session.passport.user;
     const sql = `SELECT * FROM files WHERE uid = ${session.user_id}`;
@@ -33,9 +35,9 @@ exports.getCode = (req, res) => {
         if(err) return res.status(500).json({
             errorCode: 9
         });
-        if(files[0]) fs.readFile(path.resolve(__dirname, `../../../uploads/${session.user_id}_${idx}`), 'utf8', function(err, data){
+        if(files[0]) fs.readFile(path.resolve(__dirname, `${baseDir}uploads/${session.user_id}_${idx}`), 'utf8', function(err, data){
             if(err && err.errno == -2)
-                fs.writeFileSync(path.resolve(__dirname, `../../../uploads/${session.user_id}_${idx}`), '');
+                fs.writeFileSync(path.resolve(__dirname, `${baseDir}uploads/${session.user_id}_${idx}`), '');
             return res.json({code: data || ''});
         });
         else return res.status(404).json({
@@ -53,7 +55,7 @@ exports.writeFile = (req, res) => {
         if(err) return res.status(500).json({
             errorCode: 9
         });
-        if(files[0]) fs.writeFile(path.resolve(__dirname, `../../../uploads/${session.user_id}_${idx}`), code, function(err) {
+        if(files[0]) fs.writeFile(path.resolve(__dirname, `${baseDir}uploads/${session.user_id}_${idx}`), code, function(err) {
             return res.json({result: "success"});
         });
         else return res.status(404).json({
@@ -71,7 +73,7 @@ exports.updateCode = (req, res) => {
         if(err) return res.status(500).json({
             errorCode: 9
         });
-        if(files[0]) fs.writeFile(path.resolve(__dirname, `../../uploads/${session.user_id}_${idx}`), code, function(err) {
+        if(files[0]) fs.writeFile(path.resolve(__dirname, `${baseDir}uploads/${session.user_id}_${idx}`), code, function(err) {
             return res.json({result: "success"});
         });
         else return res.status(404).json({
@@ -90,7 +92,7 @@ exports.updateMasterCode = (req, res) => {
         if(err) return res.status(500).json({
             errorCode: 9
         });
-        if(files[0]) fs.writeFile(path.resolve(__dirname, `../../../uploads/${master}_${idx}`), code, function(err) {
+        if(files[0]) fs.writeFile(path.resolve(__dirname, `${baseDir}uploads/${master}_${idx}`), code, function(err) {
             return res.json({result: "success"});
         });
         else return res.status(404).json({
@@ -108,9 +110,9 @@ exports.getMasterCode = (req, res) => {
         if(err) return res.status(500).json({
             errorCode: 9
         });
-        if(files[0]) fs.readFile(path.resolve(__dirname, `../../../uploads/${master}_${idx}`), 'utf8', function(err, data){
+        if(files[0]) fs.readFile(path.resolve(__dirname, `${baseDir}uploads/${master}_${idx}`), 'utf8', function(err, data){
             if(err && err.errno == -2)
-                fs.writeFileSync(path.resolve(__dirname, `../../../uploads/${master}_${idx}`), '');
+                fs.writeFileSync(path.resolve(__dirname, `${baseDir}uploads/${master}_${idx}`), '');
             return res.json({code: data || ''});
         });
         else return res.status(404).json({
