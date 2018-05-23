@@ -7,15 +7,15 @@ export default {
     openMasterFile(master, idx) {
       this.$store.dispatch('GET_MASTER_FILE', {master, idx})
     },
-    codeChange(newCode) {
+    codeChange(code) {
       if(this.currentIdx || this.codeState == 'basic'){
           this.$store.dispatch('UPDATE_FILE', {
             idx : this.currentIdx,
-            code : newCode,
+            code,
           }) 
           socket.action.updateCode(socket, {
             idx: this.currentIdx, master : this.currentMaster || this.user.user_id, 
-            newCode
+            code
           })
       }else this.$store.commit('UPDATE_CODE_STATE', 'basic')
     },
