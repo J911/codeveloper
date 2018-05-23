@@ -48,19 +48,15 @@ exports.getCode = (req, res) => {
 
 exports.writeFile = (req, res) => {
     const session = req.session.passport.user;
-    const idx = req.params.idx;
-    const code = req.body.code;
-    const sql = `SELECT * FROM files WHERE uid = ${session.user_id} and idx = ${idx}`;
-    connection.query(sql, (err, files) => {
+    const filename = req.body.filename;
+    const icon = 'fab fa-js';
+
+    const sql = `INSERT INTO files(uid, name, icon) VALUES('${session.user_id}', '${filename}', '${icon}')`;
+    connection.query(sql, (err) => {
         if(err) return res.status(500).json({
             errorCode: 9
         });
-        if(files[0]) fs.writeFile(path.resolve(__dirname, `${baseDir}uploads/${session.user_id}_${idx}`), code, function(err) {
-            return res.json({result: "success"});
-        });
-        else return res.status(404).json({
-            errorCode: 10 //파일을 찾을 수 없음.
-        });
+        return res.json({result: "success"});
     });
 }
 
