@@ -61,5 +61,8 @@ Codeveloper - 당신의 팀과 co-develop하세요!
 - [개발 계획](https://www.slideshare.net/ssuser827c0b/codeveloper)
 - [개발기](https://www.slideshare.net/ssuser827c0b/codeveloper-98231390)
 
+## 데모 영상
+- [Youtube](https://youtu.be/lpQRb---oGI)
+
 ## 라이센스
 GNU General Public License v3.0
