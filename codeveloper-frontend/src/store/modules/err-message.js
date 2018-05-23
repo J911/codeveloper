@@ -13,6 +13,8 @@ export default (action,code) => {
             return ko.EXIST_CONTRIBUTOR
         case 9:
             return ko.DATABASE_ERROR
+        case 10:
+            return ko.NOT_FOUND_FILE
         default:
             return ko.DEFAULT_ERROR
     }
