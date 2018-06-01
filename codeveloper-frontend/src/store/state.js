@@ -38,5 +38,6 @@ export default {
           currentMaster: null
         },
       },
+      chat: [],
       contributors: [],
 }

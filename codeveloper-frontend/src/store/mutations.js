@@ -88,6 +88,9 @@ const mutations = {
     [types.UPDATE_CONSOLE_LOG]: function (state, payload){
         state.ide.terminalLogs.push(payload) 
     },
+    [types.UPDATE_CHAT]: function (state, payload){
+        state.chat.push(payload) 
+    },
 }
 
 export default mutations

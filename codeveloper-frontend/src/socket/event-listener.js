@@ -8,7 +8,7 @@ export default (socket) => {
         }
     })
     socket.on(types.CHAT_MESSAGE, msg => {
-    
+        store.commit("UPDATE_CHAT", msg)
     })
     socket.on(types.CONTAINER_COMMAND, msg => {
         store.commit("UPDATE_CONSOLE_LOG", msg)

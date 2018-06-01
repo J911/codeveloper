@@ -96,10 +96,9 @@
             </li>
           </ul>
           <ul v-if="consoleMenu == 'chat'" class="chat">
+            <li v-for="(msg, idx) in chatMessages" :key="idx">{{ msg.user_name }}: {{ msg.text }}</li>
             <li>
-              <pre>
-                 {{ locale.PREPARATIONS_TEXT }}
-              </pre>
+              <pre>{{ user.user_name }}: <input v-model="chatMsg" @change="sendMessage()" type="text"></pre>
             </li>
           </ul>
       </div>
@@ -135,7 +134,8 @@ export default {
     return {
       newFileActive: false,
       newFileName: "",
-      command: ''
+      command: '',
+      chatMsg: ''
     }
   },
   created() {

@@ -43,6 +43,9 @@ export default {
       socket.action.cmdContainer(socket, this.user.user_id, this.command)
       this.command = ''
     },
+    sendMessage() {
+      socket.action.sendMessage(socket, this.chatMsg)
+    },
     scrollToEnd() {
       const container = document.querySelector('.terminal')
       const scrollHeight = container.scrollHeight
