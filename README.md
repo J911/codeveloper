@@ -1,4 +1,6 @@
 # codeveloper
+![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)
+
 Codeveloper - 당신의 팀과 co-develop하세요!
 
 ## 읽는법
