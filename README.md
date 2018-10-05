@@ -15,6 +15,12 @@ Codeveloper - 당신의 팀과 co-develop하세요!
 ~~*(이 코드들도 다 오픈소스로 만들어서)*~~
 ## 빌드 가이드
 
+## Feature
+- Ubuntu 기반의 터미널 제공 
+- Node Js 런타임(V8) 제공
+- 파일 생성 및 코드 편집 가능
+- 공동개발자 등록 및 동시 코드 편집
+
 ### npm install
 ```
 $ cd codeveloper-frontend
