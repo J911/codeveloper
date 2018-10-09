@@ -1,2 +1,0 @@
-exports.container = require('./container')
-
