@@ -1,2 +1,7 @@
 server:
   port: 3000
+
+passport:
+    clientID: 'feabea44a7abf82a9dd7'
+    clientSecret: ''
+    callbackURL: 'http://localhost:3000/auth/github/callback'
