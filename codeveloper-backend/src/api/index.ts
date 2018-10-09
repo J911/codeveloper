@@ -11,7 +11,7 @@ class Api extends RouterAbstract {
   }
   
   private setRoutes(): void {
-    this.router.use('/');
+    // this.router.use('/');
   }
   
 }
